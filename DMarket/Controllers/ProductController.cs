@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DMarket.Controllers
+namespace DmarketApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

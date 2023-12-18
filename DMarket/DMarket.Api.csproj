@@ -23,8 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Migrations\" />
+    <ProjectReference Include="..\DMarket.Application\DMarket.Application.csproj" />
+    <ProjectReference Include="..\DMarket.Core\DMarket.Core.csproj" />
+    <ProjectReference Include="..\DMarket.Infrastructure\DMarket.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace DMarket.Entities
+﻿namespace DMarket.Core.Entities
 {
     public class Product
     {
