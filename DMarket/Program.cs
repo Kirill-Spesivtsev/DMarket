@@ -1,14 +1,16 @@
+using DMarket.Api.Helpers;
+using DMarket.Infrastructure.Abstractions;
 using DMarket.Infrastructure.Data;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using DMarket.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<MarketDbContext>(options =>
     options.UseSqlite(connectionString));
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -28,5 +30,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+await MigrationHelper.ApplyMigrationsIfAny<MarketDbContext>(app);
 
 app.Run();
