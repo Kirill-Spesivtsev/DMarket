@@ -1,0 +1,147 @@
+[
+  {
+    "Name": "Brown Lether Jacket",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 303,
+    "ImageUrl": "images/products/product-1.png",
+    "ProductTypeId": "b8de6294-8535-40fd-905c-27fab502e125",
+    "ProductBrandId": "16ddd392-dd25-40e7-b915-39ae3f920247"
+  },
+  {
+    "Name": "Red Jacket",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 180,
+    "ImageUrl": "images/products/default-product.png",
+    "ProductTypeId": "b8de6294-8535-40fd-905c-27fab502e125",
+    "ProductBrandId": "031849dc-1ac0-4586-afeb-5dc4f52da8fe"
+  },
+  {
+    "Name": "Waterproof Jacket",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 205,
+    "ImageUrl": "images/products/product-default.png\",",
+    "ProductTypeId": "b8de6294-8535-40fd-905c-27fab502e125",
+    "ProductBrandId": "b3db22c6-5770-4b69-9140-4e5c8daf5b3b"
+  },
+  {
+    "Name": "Elite Jeans",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 420,
+    "ImageUrl": "images/products/product-default.png",
+    "ProductTypeId": "2da3e86a-429f-49c8-a91c-ae7834dc8d80",
+    "ProductBrandId": "1c34dea3-f132-402e-b4dd-4119776506cd"
+  },
+  {
+    "Name": "Torn Jeans",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 236,
+    "ImageUrl": "images/products/product-default.png",
+    "ProductTypeId": "2da3e86a-429f-49c8-a91c-ae7834dc8d80",
+    "ProductBrandId": "031849dc-1ac0-4586-afeb-5dc4f52da8fe"
+  },
+  {
+    "Name": "White Shirt",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 20,
+    "ImageUrl": "images/products/product-default.png",
+    "ProductTypeId": "e49d099d-4ba1-4fa8-8f88-a05dd8518fcc",
+    "ProductBrandId": "b3db22c6-5770-4b69-9140-4e5c8daf5b3b"
+  },
+  {
+    "Name": "Raindow Shirt",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 30,
+    "ImageUrl": "images/products/product-default.png",
+    "ProductTypeId": "e49d099d-4ba1-4fa8-8f88-a05dd8518fcc",
+    "ProductBrandId": "031849dc-1ac0-4586-afeb-5dc4f52da8fe"
+  },
+  {
+    "Name": "Blue Cap",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 8,
+    "ImageUrl": "images/products/product-default.png",
+    "ProductTypeId": "9f87590b-2f94-42ec-90af-f606bbd164f6",
+    "ProductBrandId": "16ddd392-dd25-40e7-b915-39ae3f920247"
+  },
+  {
+    "Name": "Brown Woolen Hat",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 20,
+    "ImageUrl": "images/products/product-default.png",
+    "ProductTypeId": "9f87590b-2f94-42ec-90af-f606bbd164f6",
+    "ProductBrandId": "031849dc-1ac0-4586-afeb-5dc4f52da8fe"
+  },
+  {
+    "Name": "Straw Hat",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 59,
+    "ImageUrl": "images/products/product-default.png",
+    "ProductTypeId": "9f87590b-2f94-42ec-90af-f606bbd164f6",
+    "ProductBrandId": "1c34dea3-f132-402e-b4dd-4119776506cd"
+  },
+  {
+    "Name": "Red Boots",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 43,
+    "ImageUrl": "images/products/product-default.png",
+    "ProductTypeId": "67762151-67ba-4691-b627-59fb22a1d8ac",
+    "ProductBrandId": "16ddd392-dd25-40e7-b915-39ae3f920247"
+  },
+  {
+    "Name": "Army Boots",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 110,
+    "ImageUrl": "images/products/product-default.png",
+    "ProductTypeId": "67762151-67ba-4691-b627-59fb22a1d8ac",
+    "ProductBrandId": "b4a8978a-9049-465d-bc5c-b71e028b40d5"
+  },
+  {
+    "Name": "Wooden Sandals",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 58,
+    "ImageUrl": "images/products/product-default.png",
+    "ProductTypeId": "67762151-67ba-4691-b627-59fb22a1d8ac",
+    "ProductBrandId": "16ddd392-dd25-40e7-b915-39ae3f920247"
+  },
+  {
+    "Name": "Blue Slippers",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 15,
+    "ImageUrl": "images/products/product-default.png",
+    "ProductTypeId": "67762151-67ba-4691-b627-59fb22a1d8ac",
+    "ProductBrandId": "031849dc-1ac0-4586-afeb-5dc4f52da8fe"
+  },
+  {
+    "Name": "Long Blue Shoes",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 180,
+    "ImageUrl": "images/products/product-default.png",
+    "ProductTypeId": "67762151-67ba-4691-b627-59fb22a1d8ac",
+    "ProductBrandId": "1c34dea3-f132-402e-b4dd-4119776506cd"
+  },
+  {
+    "Name": "Green Gloves",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 14,
+    "ImageUrl": "images/products/product-default.png",
+    "ProductTypeId": "04c51959-5c5b-46a2-8970-5996f8dbb95e",
+    "ProductBrandId": "031849dc-1ac0-4586-afeb-5dc4f52da8fe"
+  },
+  {
+    "Name": "Black Opened Gloves",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 12,
+    "ImageUrl": "images/products/product-default.png",
+    "ProductTypeId": "04c51959-5c5b-46a2-8970-5996f8dbb95e",
+    "ProductBrandId": "09276839-2b79-42f1-97fb-0565c8b6772e"
+  },
+  {
+    "Name": "White Woolen Gloves",
+    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 18,
+    "ImageUrl": "images/products/product-default.png",
+    "ProductTypeId": "04c51959-5c5b-46a2-8970-5996f8dbb95e",
+    "ProductBrandId": "16ddd392-dd25-40e7-b915-39ae3f920247"
+  }
+
+]

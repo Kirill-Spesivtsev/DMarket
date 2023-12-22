@@ -1,0 +1,27 @@
+[
+  {
+    "Id": "16ddd392-dd25-40e7-b915-39ae3f920247",
+    "Name": "Lacoste"
+  },
+  {
+    "Id": "031849dc-1ac0-4586-afeb-5dc4f52da8fe",
+    "Name": "Zara"
+  },
+  {
+    "Id": "b4a8978a-9049-465d-bc5c-b71e028b40d5",
+    "Name": "Reebook"
+  },
+  {
+    "Id": "b3db22c6-5770-4b69-9140-4e5c8daf5b3b",
+    "Name": "Adidas"
+  },
+  {
+    "Id": "09276839-2b79-42f1-97fb-0565c8b6772e",
+    "Name": "Puma"
+  },
+  {
+    "Id": "1c34dea3-f132-402e-b4dd-4119776506cd",
+    "Name": "Gucchi"
+  }
+
+]

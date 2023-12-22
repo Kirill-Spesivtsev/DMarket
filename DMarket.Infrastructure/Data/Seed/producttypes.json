@@ -1,0 +1,27 @@
+[
+  {
+    "Id": "b8de6294-8535-40fd-905c-27fab502e125",
+    "Name": "Jacket"
+  },
+  {
+    "Id": "2da3e86a-429f-49c8-a91c-ae7834dc8d80",
+    "Name": "Trousers"
+  },
+  {
+    "Id": "e49d099d-4ba1-4fa8-8f88-a05dd8518fcc",
+    "Name": "Shirt"
+  },
+  {
+    "Id": "9f87590b-2f94-42ec-90af-f606bbd164f6",
+    "Name": "Hat"
+  },
+  {
+    "Id": "67762151-67ba-4691-b627-59fb22a1d8ac",
+    "Name": "Boots"
+  },
+  {
+    "Id": "04c51959-5c5b-46a2-8970-5996f8dbb95e",
+    "Name": "Gloves"
+  }
+
+]
