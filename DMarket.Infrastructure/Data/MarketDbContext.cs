@@ -17,5 +17,9 @@ namespace DMarket.Infrastructure.Data
 
         public DbSet<Product> Products;
 
+        public DbSet<ProductType> ProductTypes;
+
+        public DbSet<ProductBrand> ProductBrands;
+
     }
 }
