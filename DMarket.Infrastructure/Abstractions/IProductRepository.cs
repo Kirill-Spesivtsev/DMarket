@@ -19,11 +19,11 @@ namespace DMarket.Infrastructure.Abstractions
 
         public Task<Product?> GetProductByIdAsync(Guid id);
 
-        public void AddProduct(Product entity);
+        public Task AddProduct(Product entity);
 
-        public void UpdateProduct(Product entity);
+        public Task UpdateProduct(Product entity);
 
-        public void RemoveProduct(Product entity);
+        public Task RemoveProduct(Product entity);
 
         public IQueryable<Product> GetFilteredProductsAsync(Expression<Func<Product, bool>> predicate);
     }

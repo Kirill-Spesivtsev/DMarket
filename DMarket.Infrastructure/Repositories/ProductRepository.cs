@@ -16,7 +16,7 @@ namespace DMarket.Infrastructure.Repositories
         {
             _context = context;
         }  
-        public IQueryable<Product> GetAllAsync()  
+        public IQueryable<Product> GetAllProductsAsync()  
         {  
             return _context.Products.AsQueryable();  
         }  
@@ -31,20 +31,30 @@ namespace DMarket.Infrastructure.Repositories
             return _context.ProductTypes.AsQueryable();  
         }
   
-        public async Task<Product?> GetByIdAsync(Guid id)
+        public async Task<Product?> GetProductByIdAsync(Guid id)
         {  
             return await _context.Products.FindAsync(id);
         }  
 
-        public void Add(Product entity) => _context.Products.Add(entity);
+        public async Task AddProduct(Product entity)
+        {
+            _context.Products.Add(entity); 
+            await _context.SaveChangesAsync();
+        }
   
-        public void Update(Product entity) => _context.Products.Update(entity);
+        public async Task UpdateProduct(Product entity)
+        {
+            _context.Products.Update(entity);
+            await _context.SaveChangesAsync();
+        } 
 
-        public void Remove(Product entity) => _context.Products.Remove(entity!);              
+        public async Task RemoveProduct(Product entity)
+        { 
+            _context.Products.Remove(entity);  
+            await _context.SaveChangesAsync();
+        }                
 
-        public async Task SaveAsync() => await _context.SaveChangesAsync();        
-
-        public IQueryable<Product> GetFilteredAsync(Expression<Func<Product, bool>> predicate)
+        public IQueryable<Product> GetFilteredProductsAsync(Expression<Func<Product, bool>> predicate)
         {
             return _context.Products.Where(predicate).AsQueryable();
         }

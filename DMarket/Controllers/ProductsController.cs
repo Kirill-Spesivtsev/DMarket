@@ -20,25 +20,27 @@ namespace DmarketApi.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Product>>> GetProducts()
         {
-            var result = await Task.FromResult(_repo.GetAllAsync());
+            var result = await Task.FromResult(_repo.GetAllProductsAsync());
             return Ok(result);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(Guid id) => await _repo.GetByIdAsync(id);
-
+        public async Task<ActionResult<Product?>> GetProduct(Guid id)
+        {
+            return await _repo.GetProductByIdAsync(id);
+        }
 
         [HttpGet("brands")]
-        public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductBrands()
+        public async Task<ActionResult<List<ProductBrand>>> GetProductBrands()
         {
-            var result = await Task.FromResult(_repo.GetAllAsync());
+            var result = await Task.FromResult(_repo.GetAllProductBrandsAsync());
             return Ok(result);
         }
 
         [HttpGet("types")]
-        public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductTypes()
+        public async Task<ActionResult<List<ProductBrand>>> GetProductTypes()
         {
-            var result = await Task.FromResult(_repo.GetAllAsync());
+            var result = await Task.FromResult(_repo.GetAllProductTypesAsync());
             return Ok(result);
         }
     }
