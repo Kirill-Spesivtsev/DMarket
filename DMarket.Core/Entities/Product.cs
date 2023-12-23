@@ -1,8 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace DMarket.Core.Entities
+﻿namespace DMarket.Core.Entities
 {
-    [SuppressMessage("", "CS8618")]
     public class Product
     {
         public Guid Id { get; set; }

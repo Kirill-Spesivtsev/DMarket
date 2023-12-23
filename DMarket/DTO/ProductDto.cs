@@ -1,6 +1,4 @@
-﻿using DMarket.Core.Entities;
-
-namespace DMarket.Api.DTO
+﻿namespace DMarket.Api.DTO
 {
     public class ProductDto
     {

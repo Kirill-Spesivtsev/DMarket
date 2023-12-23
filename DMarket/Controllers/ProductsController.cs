@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using DMarket.Api.DTO;
 using DMarket.Core.Entities;
+using DMarket.Core.Exceptions;
 using DMarket.Infrastructure.Abstractions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProductMicroservice.Domain.Exceptions;
 
 namespace DmarketApi.Controllers
 {
@@ -35,7 +37,7 @@ namespace DmarketApi.Controllers
             var product = await _repository.GetProductByIdAsync(id);
             if (product == null)
             {
-                return NotFound("Product does not exist");
+                throw new ProductNotFoundException(id.ToString());
             }
 
             return Ok(_mapper.Map<Product, ProductDto>(product));
