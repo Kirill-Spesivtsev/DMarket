@@ -10,7 +10,7 @@ namespace DMarket.Infrastructure.Repositories
 {
     public class ProductRepository : IProductRepository, IDisposable
     {
-        private readonly MarketDbContext _context;
+        private MarketDbContext _context;
   
         public ProductRepository(MarketDbContext context)
         {
@@ -18,23 +18,15 @@ namespace DMarket.Infrastructure.Repositories
         }  
         public IQueryable<Product> GetAllProductsAsync()  
         {  
-            return _context.Products.AsQueryable();  
+            return _context.Products.Include(p => p.ProductBrand).Include(p => p.ProductType);  
         }  
 
-        public IQueryable<ProductBrand> GetAllProductBrandsAsync()
-        {
-            return _context.ProductBrands.AsQueryable();  
-        }
+        public IQueryable<ProductBrand> GetAllProductBrandsAsync() => _context.ProductBrands;
 
-        public IQueryable<ProductType> GetAllProductTypesAsync()
-        {
-            return _context.ProductTypes.AsQueryable();  
-        }
+        public IQueryable<ProductType> GetAllProductTypesAsync() => _context.ProductTypes;
   
-        public async Task<Product?> GetProductByIdAsync(Guid id)
-        {  
-            return await _context.Products.FindAsync(id);
-        }  
+        public async Task<Product?> GetProductByIdAsync(Guid id) => await _context.Products.FindAsync(id);
+          
 
         public async Task AddProduct(Product entity)
         {
@@ -65,7 +57,7 @@ namespace DMarket.Infrastructure.Repositories
         {
             if (!disposed && disposing)
             {
-                _context.Dispose();
+                _context?.Dispose();
             }
             disposed = true;
         }

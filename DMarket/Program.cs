@@ -31,7 +31,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-await DbContextHelper.GetDbContext<MarketDbContext>(app);
+await MigrationHelper.ApplyMigrationsIfAny<MarketDbContext>(app);
 
 await DatabaseSeeder.SeedMarketDbAsync(app.Services.CreateScope());
 

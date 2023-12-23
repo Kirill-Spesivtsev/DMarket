@@ -2,9 +2,9 @@
 
 namespace DMarket.Api.Helpers
 {
-    public static class DbContextHelper
+    public static class MigrationHelper
     {
-        public static async Task GetDbContext<T>(WebApplication app) where T : DbContext
+        public static async Task ApplyMigrationsIfAny<T>(WebApplication app) where T : DbContext
         {
             using var scope = app.Services.CreateScope();
             var context = scope.ServiceProvider.GetRequiredService<T>();
