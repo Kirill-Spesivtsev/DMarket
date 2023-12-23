@@ -10,7 +10,7 @@ namespace DMarket.Infrastructure.Repositories
 {
     public class ProductRepository : IProductRepository, IDisposable
     {
-        private MarketDbContext _context;
+        private readonly MarketDbContext _context;
   
         public ProductRepository(MarketDbContext context)
         {
@@ -24,7 +24,7 @@ namespace DMarket.Infrastructure.Repositories
         public IQueryable<ProductBrand> GetAllProductBrandsAsync() => _context.ProductBrands;
 
         public IQueryable<ProductType> GetAllProductTypesAsync() => _context.ProductTypes;
-  
+ 
         public async Task<Product?> GetProductByIdAsync(Guid id) => await _context.Products.FindAsync(id);
           
 
@@ -38,7 +38,7 @@ namespace DMarket.Infrastructure.Repositories
         {
             _context.Products.Update(entity);
             await _context.SaveChangesAsync();
-        } 
+        }
 
         public async Task RemoveProduct(Product entity)
         { 
