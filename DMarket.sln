@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMarket.Infrastructure", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMarket.Application", "DMarket.Application\DMarket.Application.csproj", "{A3F9E64B-F824-448E-A52B-505884F5C0F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMarket.Client", "DMarket.Client\DMarket.Client.csproj", "{380043CE-FD57-47B4-8CBA-8D7828591748}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A3F9E64B-F824-448E-A52B-505884F5C0F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3F9E64B-F824-448E-A52B-505884F5C0F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3F9E64B-F824-448E-A52B-505884F5C0F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{380043CE-FD57-47B4-8CBA-8D7828591748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{380043CE-FD57-47B4-8CBA-8D7828591748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{380043CE-FD57-47B4-8CBA-8D7828591748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{380043CE-FD57-47B4-8CBA-8D7828591748}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,6 +5,7 @@ using DMarket.Core.Exceptions;
 using DMarket.Infrastructure.Abstractions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProductMicroservice.Domain.Exceptions;
 
 namespace DmarketApi.Controllers
@@ -26,7 +27,7 @@ namespace DmarketApi.Controllers
         [HttpGet]
         public async Task<ActionResult<List<ProductDto>>> GetProducts()
         {
-            var products = await Task.FromResult(_repository.GetAllProductsAsync());
+            var products = await _repository.GetAllProductsAsync().ToListAsync();
             var result = products.Select(product => _mapper.Map<Product, ProductDto>(product));
             return Ok(result);
         }
@@ -46,14 +47,14 @@ namespace DmarketApi.Controllers
         [HttpGet("brands")]
         public async Task<ActionResult<List<ProductBrand>>> GetProductBrands()
         {
-            var brands = await Task.FromResult(_repository.GetAllProductBrandsAsync());
+            var brands = await _repository.GetAllProductBrandsAsync().ToListAsync();
             return Ok(brands);
         }
 
         [HttpGet("types")]
         public async Task<ActionResult<List<ProductBrand>>> GetProductTypes()
         {
-            var types = await Task.FromResult(_repository.GetAllProductTypesAsync());
+            var types = await _repository.GetAllProductTypesAsync().ToListAsync();
             return Ok(types);
         }
     }
