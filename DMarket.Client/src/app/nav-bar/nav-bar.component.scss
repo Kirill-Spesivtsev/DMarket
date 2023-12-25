@@ -1,0 +1,45 @@
+.ec-height-50{
+    height: 50px;
+}
+
+.ec-height-65{
+    height: 65px;
+}
+
+.ec-width-40{
+    width: 50px;
+}
+
+.ec-nav-link{
+    transform: scale(1); 
+    transition: transform 0.15s ease-out;
+}
+
+.ec-nav-link:hover{
+    transform: scale(1.2);
+    transition: transform 0.15s ease-out;
+}
+
+.cart-number{
+    position: absolute;
+    min-height: 25px;
+    min-width: 25px;
+    border-radius: 50%;
+    background-color: rgb(255, 115, 0);
+    color: white;
+    text-align: center;
+    top: -10px;
+    right: 30px;
+}
+
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+
+$custom-orange:rgb(255, 115, 0);
+
+.btn-orange {
+    @include button-variant($custom-orange, $custom-orange, #222222, lighten($custom-orange,15%), lighten($custom-orange, 20%), #222222);
+}
+
+.btn-outline-orange {
+    @include button-outline-variant($custom-orange, #222222, lighten($custom-orange,5%), $custom-orange);
+}
