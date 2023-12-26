@@ -2,7 +2,7 @@ using AutoMapper;
 using DMarket.Api.DTO;
 using DMarket.Core.Entities;
 
-namespace DMarket.Helpers
+namespace DMarket.Api.Helpers
 {
     public class MappingProfiles : Profile
     {

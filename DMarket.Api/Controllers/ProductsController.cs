@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProductMicroservice.Domain.Exceptions;
 
-namespace DmarketApi.Controllers
+namespace DMarket.Api.Controllers
 {
     [Route("api/v1/products")]
     [ApiController]
