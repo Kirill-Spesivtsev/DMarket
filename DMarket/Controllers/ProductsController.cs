@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DMarket.Api.DTO;
+using DMarket.Api.Helpers;
 using DMarket.Core.Entities;
 using DMarket.Core.Exceptions;
 using DMarket.Infrastructure.Abstractions;
@@ -25,11 +26,17 @@ namespace DmarketApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ProductDto>>> GetProducts()
+        public async Task<ActionResult<List<ProductDto>>> GetProducts(int pageNumber = 1, int pageSize = 20)
         {
-            var products = await _repository.GetAllProductsAsync().ToListAsync();
-            var result = products.Select(product => _mapper.Map<Product, ProductDto>(product));
-            return Ok(result);
+            var count = await _repository.CountProducts();
+
+            var productsPage = _repository
+                .GetAllProductsAsync()
+                .OrderBy(p=>p.Id)
+                .Select(product => _mapper.Map<Product, ProductDto>(product))
+                .GetListPage(pageNumber, pageSize, count);
+                
+            return Ok(productsPage);
         }
 
         [HttpGet("{id}")]

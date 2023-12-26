@@ -32,7 +32,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddCors(options => {
     options.AddPolicy("CorsPolicy", policy =>
     {
-        policy.AllowAnyHeader().AllowAnyMethod().WithOrigins(@"https://localhost:7113/");
+        policy.AllowAnyHeader().AllowAnyMethod().WithOrigins(@"https://localhost:7113", @"https://localhost:4200");
     });
 });
 

@@ -26,7 +26,8 @@ namespace DMarket.Infrastructure.Repositories
         public IQueryable<ProductType> GetAllProductTypesAsync() => _context.ProductTypes;
  
         public async Task<Product?> GetProductByIdAsync(Guid id) => await _context.Products.FindAsync(id);
-          
+        
+        public async Task<int> CountProducts() => await _context.Products.CountAsync();
 
         public async Task AddProduct(Product entity)
         {
@@ -48,7 +49,8 @@ namespace DMarket.Infrastructure.Repositories
 
         public IQueryable<Product> GetFilteredProductsAsync(Expression<Func<Product, bool>> predicate)
         {
-            return _context.Products.Where(predicate).AsQueryable();
+            return _context.Products.Where(predicate)
+                .Include(p => p.ProductBrand).Include(p => p.ProductType);
         }
 
         private bool disposed = false;

@@ -19,6 +19,8 @@ namespace DMarket.Infrastructure.Abstractions
 
         public Task<Product?> GetProductByIdAsync(Guid id);
 
+        public Task<int> CountProducts();
+
         public Task AddProduct(Product entity);
 
         public Task UpdateProduct(Product entity);
