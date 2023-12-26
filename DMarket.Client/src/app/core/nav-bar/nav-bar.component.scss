@@ -37,7 +37,7 @@
 $custom-orange:rgb(255, 115, 0);
 
 .btn-orange {
-    @include button-variant($custom-orange, $custom-orange, #222222, lighten($custom-orange,15%), lighten($custom-orange, 20%), #222222);
+    @include button-variant($custom-orange, $custom-orange, white, lighten($custom-orange, 10%), lighten($custom-orange, 10%), white, darken($custom-orange, 5%), $custom-orange, white);
 }
 
 .btn-outline-orange {

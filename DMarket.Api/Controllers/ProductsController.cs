@@ -32,7 +32,7 @@ namespace DMarket.Api.Controllers
 
             var productsPage = _repository
                 .GetAllProductsAsync()
-                .OrderBy(p=>p.Id)
+                .OrderBy(p => p.Id)
                 .Select(product => _mapper.Map<Product, ProductDto>(product))
                 .GetListPage(pageNumber, pageSize, count);
                 
