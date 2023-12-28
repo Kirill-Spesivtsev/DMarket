@@ -5,13 +5,13 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMarket.Api", "DMarket.Api\DMarket.Api.csproj", "{DB46075E-006F-4DF8-A918-2C970C6C2E1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMarket.Core", "DMarket.Core\DMarket.Core.csproj", "{8DEBE502-6694-4B40-B21A-06FD777B88C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMarket.Core", "DMarket.Core\DMarket.Core.csproj", "{8DEBE502-6694-4B40-B21A-06FD777B88C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMarket.Infrastructure", "DMarket.Infrastructure\DMarket.Infrastructure.csproj", "{45969B00-4904-4714-AF2E-C4713210B578}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMarket.Infrastructure", "DMarket.Infrastructure\DMarket.Infrastructure.csproj", "{45969B00-4904-4714-AF2E-C4713210B578}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMarket.Application", "DMarket.Application\DMarket.Application.csproj", "{A3F9E64B-F824-448E-A52B-505884F5C0F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMarket.Application", "DMarket.Application\DMarket.Application.csproj", "{A3F9E64B-F824-448E-A52B-505884F5C0F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMarket.Client", "DMarket.Client\DMarket.Client.csproj", "{380043CE-FD57-47B4-8CBA-8D7828591748}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMarket.Client", "DMarket.Client\DMarket.Client.csproj", "{380043CE-FD57-47B4-8CBA-8D7828591748}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,7 +36,6 @@ Global
 		{A3F9E64B-F824-448E-A52B-505884F5C0F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3F9E64B-F824-448E-A52B-505884F5C0F2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{380043CE-FD57-47B4-8CBA-8D7828591748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{380043CE-FD57-47B4-8CBA-8D7828591748}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{380043CE-FD57-47B4-8CBA-8D7828591748}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{380043CE-FD57-47B4-8CBA-8D7828591748}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

@@ -7,7 +7,9 @@ using DMarket.Infrastructure.Abstractions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ProductMicroservice.Domain.Exceptions;
+using System.Collections.Generic;
+using System.Reflection;
+
 
 namespace DMarket.Api.Controllers
 {
@@ -26,17 +28,20 @@ namespace DMarket.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ProductDto>>> GetProducts(int pageNumber = 1, int pageSize = 20)
+        public async Task<ActionResult<List<ProductDto>>> GetProducts([FromQuery]ProductQueryParamsDto op)
         {
             var count = await _repository.CountProducts();
 
-            var productsPage = _repository
-                .GetAllProductsAsync()
-                .OrderBy(p => p.Id)
+            var products = _repository.GetAllProductsAsync()
+                .SearchProducts(op.SearchString)
+                .FilterProducts(
+                    op.TitleFilter, op.DescriptionFilter, op.MinPriceFilter, 
+                    op.MaxPriceFilter, op.BrandIdFilter, op.TypeIdFilter)
+                .SortProducts(op.SortKey, op.SortOrder)
                 .Select(product => _mapper.Map<Product, ProductDto>(product))
-                .GetListPage(pageNumber, pageSize, count);
-                
-            return Ok(productsPage);
+                .GetListPage(op.PageNumber, op.PageSize, count);
+            
+            return Ok(products);
         }
 
         [HttpGet("{id}")]

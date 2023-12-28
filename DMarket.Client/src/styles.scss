@@ -5,3 +5,17 @@
 
 /* Importing Datepicker SCSS file. */
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+
+
+/* Custom button */
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+$custom-orange:rgb(255, 115, 0);
+
+.btn-orange {
+    @include button-variant($custom-orange, $custom-orange, white, lighten($custom-orange, 10%), lighten($custom-orange, 10%), white, darken($custom-orange, 5%), $custom-orange, white);
+}
+
+.btn-outline-orange {
+    @include button-outline-variant($custom-orange, #222222, lighten($custom-orange,5%), $custom-orange);
+}

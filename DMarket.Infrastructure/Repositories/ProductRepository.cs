@@ -18,7 +18,7 @@ namespace DMarket.Infrastructure.Repositories
         }  
         public IQueryable<Product> GetAllProductsAsync()  
         {  
-            return _context.Products.Include(p => p.ProductBrand).Include(p => p.ProductType);  
+            return _context.Products.Include(p=>p.ProductBrand).Include(p=>p.ProductType).AsNoTracking();  
         }  
 
         public IQueryable<ProductBrand> GetAllProductBrandsAsync() => _context.ProductBrands;

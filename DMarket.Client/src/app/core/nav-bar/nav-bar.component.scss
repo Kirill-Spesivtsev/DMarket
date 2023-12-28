@@ -1,12 +1,12 @@
-.ec-height-50{
+.ec-h-50{
     height: 50px;
 }
 
-.ec-height-65{
+.ec-h-65{
     height: 65px;
 }
 
-.ec-width-40{
+.ec-w-40{
     width: 50px;
 }
 
@@ -20,7 +20,7 @@
     transition: transform 0.15s ease-out;
 }
 
-.cart-number{
+.ec-cart-number{
     position: absolute;
     min-height: 25px;
     min-width: 25px;
@@ -29,7 +29,7 @@
     color: white;
     text-align: center;
     top: -10px;
-    right: 30px;
+    left: 20px;
 }
 
 @import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
