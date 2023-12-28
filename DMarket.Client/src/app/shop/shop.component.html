@@ -24,7 +24,7 @@
                     <option>Price: low to high</option>
                     <option>Price: high to low</option>
                 </select>
-                <button class="btn btn-outline-primary float-end" (click)="ordAsc = !ordAsc;console.log(ordAsc)">
+                <button class="btn btn-outline-primary float-end" (click)="ordAsc = !ordAsc">
                     <div *ngIf="ordAsc then ascending_order else descending_order"></div>
                     <ng-template #ascending_order>
                         <i class="fa fa fa-sort-amount-asc"></i>
@@ -37,23 +37,31 @@
 
             <h5 class="text-warning ms-3 mb-3">Price</h5>
             <div class="input-group mb-5">
-                <input type="text" placeholder="Min" class="form-control">
-                <input type="text" placeholder="Max" class="form-control">
+                <input type="number" min="0" placeholder="Min" class="form-control"
+                (keyup)="onMinPriceSet('1')">
+                <input type="number" min="0" placeholder="Max" class="form-control">
             </div>
 
             <h5 class="text-warning ms-3">Brands</h5>
-            <ul class="list-group my-3">
-                <li class="list-group-item active">All</li>
-                <li class="list-group-item" *ngFor="let brand of brands">{{brand.name}}</li>
+            <ul class="list-group my-3"> 
+                <li class="list-group-item" *ngFor="let brand of brands" 
+                        [class.active]="brand.id === brandIdSecected" 
+                         (click)="onBrandSelected(brand.id)">
+                    {{brand.name}}
+                </li>
             </ul>
             <h5 class="text-warning ms-3">Types</h5>
             <ul class="list-group my-3">
-                <li class="list-group-item" *ngFor="let type of types">{{type.name}}</li>
+                <li class="list-group-item" *ngFor="let type of types"
+                        [class.active]="type.id === typeIdSelected" 
+                         (click)="onTypeSelected(type.id)">
+                    {{type.name}}
+                </li>
             </ul>
-            <div class="vr"></div>
+            
         </section>
 
-        <section class="col-xxl-9 col-xl-9 col-lg-9 col-md-8 col-8">
+        <section class="col-lg-9 col-md-8 col-8">
             <div class="row row-cols-xxl-4 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1 g-3">
                 <div class="col" *ngFor="let product of products">
                     <app-product-item [product]="product"></app-product-item>

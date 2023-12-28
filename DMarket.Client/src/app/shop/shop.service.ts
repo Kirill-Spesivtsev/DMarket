@@ -17,8 +17,8 @@ export class ShopService {
     let params = new HttpParams()
       .set('pageNumber', 1)
       .set('pageSize', 12);
-    if (brandId && brandId != "All") params = params.set('brandId', brandId);
-    if (typeId && typeId != "All") params = params.set('typeId', typeId);
+    if (brandId && brandId != "All") params = params.set('brandIdFilter', brandId);
+    if (typeId && typeId != "All") params = params.set('typeIdFilter', typeId);
     
     return this.http.get<Pagination<Product[]>>(environment.apiBaseUrl + "products", {params: params});
   }

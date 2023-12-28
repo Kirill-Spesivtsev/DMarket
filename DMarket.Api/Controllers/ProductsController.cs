@@ -34,8 +34,7 @@ namespace DMarket.Api.Controllers
 
             var products = _repository.GetAllProductsAsync()
                 .SearchProducts(op.SearchString)
-                .FilterProducts(
-                    op.TitleFilter, op.DescriptionFilter, op.MinPriceFilter, 
+                .FilterProducts(op.TitleFilter, op.DescriptionFilter, op.MinPriceFilter, 
                     op.MaxPriceFilter, op.BrandIdFilter, op.TypeIdFilter)
                 .SortProducts(op.SortKey, op.SortOrder)
                 .Select(product => _mapper.Map<Product, ProductDto>(product))
