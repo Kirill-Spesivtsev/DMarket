@@ -81,7 +81,6 @@ export class ShopComponent implements OnInit{
   onMinPriceSet(price: string){
     this.minPrice = parseInt(price, 10);
     //this.getProducts();
-    alert(this.minPrice);
   }
 
   onMaxPriceSet(price: string){
@@ -92,6 +91,13 @@ export class ShopComponent implements OnInit{
   onSortSelected(event: any){
     this.shopParams.sortKey = event.target.value;
     this.getProducts();
+  }
+
+  onPageChanged(event: any){
+    if (this.shopParams.pageNumber != event.page){
+      this.shopParams.pageNumber = event.page;
+      this.getProducts();
+    }
   }
 
 }

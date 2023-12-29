@@ -9,7 +9,7 @@ namespace DMarket.Api.Helpers
         {
             return new PagedResponse<T>()
             {
-                PageNumber = pageNumber < 1 ? pageNumber : 1,
+                PageNumber = pageNumber >= 1 ? pageNumber : 1,
                 PageSize = pageSize >= 1 ? pageSize : 20,
                 TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize),
                 HasPrevious = pageNumber > 1,
