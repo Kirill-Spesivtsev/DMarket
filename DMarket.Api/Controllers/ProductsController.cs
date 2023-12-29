@@ -30,17 +30,19 @@ namespace DMarket.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<List<ProductDto>>> GetProducts([FromQuery]ProductQueryParamsDto op)
         {
-            var count = await _repository.CountProducts();
-
             var products = _repository.GetAllProductsAsync()
                 .SearchProducts(op.SearchString)
                 .FilterProducts(op.TitleFilter, op.DescriptionFilter, op.MinPriceFilter, 
                     op.MaxPriceFilter, op.BrandIdFilter, op.TypeIdFilter)
-                .SortProducts(op.SortKey, op.SortOrder)
+                .SortProducts(op.SortKey, op.SortOrder);
+
+            var count = await products.CountAsync(); 
+
+            var page = products 
                 .Select(product => _mapper.Map<Product, ProductDto>(product))
                 .GetListPage(op.PageNumber, op.PageSize, count);
             
-            return Ok(products);
+            return Ok(page);
         }
 
         [HttpGet("{id}")]

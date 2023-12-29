@@ -14,11 +14,11 @@ namespace DMarket.Api.Helpers
             Expression<Func<Product, object>> sortKeyExpr = sortKey?.ToLower() switch
             {
                 "id" => product => product.Id,
-                "title" => product => product.Name,
-                "description" => product => product.Description!,
+                "name" => product => product.Name,
+                "description" => product => product.Description,
                 "price" => product => product.Price,
-                "created_date" => product => product.CreatedTime,
-                _ => product => product.Id
+                "created_time" => product => product.CreatedTime,
+                _ => product => product.Name
             };
 
             if (sortOrder == "desc" || sortOrder == "descending")

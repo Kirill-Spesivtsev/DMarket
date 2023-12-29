@@ -21,11 +21,13 @@ export class ShopComponent implements OnInit{
   maxPrice: number | null = null;
 
   sortOptions = [
-    {name: "Title", value: "title"},
+    {name: "Name", value: "name"},
     {name: "Id", value: "id"},
     {name: "Price", value: "price"},
     {name: "Created", value: "created_time"}
   ]
+
+  totalCount = 0;
 
   ordAsc: boolean = true;
   
@@ -42,7 +44,12 @@ export class ShopComponent implements OnInit{
     this.shopParams.sortOrder = this.ordAsc ? "asc" : "desc";
     this.shopService.getProducts(this.shopParams)
         .subscribe({
-          next: response => this.products = response.data,
+          next: response => {
+            this.products = response.data;
+            this.shopParams.pageNumber = response.pageNumber;
+            this.shopParams.pageSize = response.pageSize;
+            this.totalCount = response.totalElements;
+          },
           error: error => console.log(error)
         })
   }
@@ -83,7 +90,7 @@ export class ShopComponent implements OnInit{
   }
 
   onSortSelected(event: any){
-    this.shopParams.sortOrder = event.target.value;
+    this.shopParams.sortKey = event.target.value;
     this.getProducts();
   }
 

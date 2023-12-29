@@ -16,12 +16,13 @@ export class ShopService {
 
   getProducts(p: ShopParams) {
     let params = new HttpParams()
-      .set('pageNumber', 1)
-      .set('pageSize', 12);
+      .set('pageNumber', p.pageNumber)
+      .set('pageSize', p.pageSize);
     if (p.brandId && p.brandId != "All") params = params.set('brandIdFilter', p.brandId);
     if (p.typeId && p.typeId != "All") params = params.set('typeIdFilter', p.typeId);
     if (p.sortOrder) params = params.set('sortOrder', p.sortOrder);
     if (p.sortKey) params = params.set('sortKey', p.sortKey);
+    console.log(p.sortOrder);
 
     return this.http.get<Pagination<Product[]>>(environment.apiBaseUrl + "products", {params: params});
   }
