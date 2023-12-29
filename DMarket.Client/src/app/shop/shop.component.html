@@ -19,12 +19,12 @@
         <section class="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-4">
             <h5 class="text-warning ms-3 mt-5 mb-3">Sort</h5>
             <div class="d-xxl-flex d-xl-flex d-lg-flex d-md-flex d-block justify-content-end mb-5">
-                <select class="form-select">
-                    <option selected>Alphabetical</option>
-                    <option>Price: low to high</option>
-                    <option>Price: high to low</option>
+                <select class="form-select" (change)="onSortSelected($event)">
+                    <option *ngFor="let sort of sortOptions" [value]="sort.value">
+                        {{sort.name}}
+                    </option>
                 </select>
-                <button class="btn btn-outline-primary float-end" (click)="ordAsc = !ordAsc">
+                <button class="btn btn-outline-primary float-end" (click)="ordAsc = !ordAsc;onSortSelected($event)">
                     <div *ngIf="ordAsc then ascending_order else descending_order"></div>
                     <ng-template #ascending_order>
                         <i class="fa fa fa-sort-amount-asc"></i>
@@ -45,7 +45,7 @@
             <h5 class="text-warning ms-3">Brands</h5>
             <ul class="list-group my-3"> 
                 <li class="list-group-item" *ngFor="let brand of brands" 
-                        [class.active]="brand.id === brandIdSecected" 
+                        [class.active]="brand.id === this.shopParams.brandId" 
                          (click)="onBrandSelected(brand.id)">
                     {{brand.name}}
                 </li>
@@ -53,7 +53,7 @@
             <h5 class="text-warning ms-3">Types</h5>
             <ul class="list-group my-3">
                 <li class="list-group-item" *ngFor="let type of types"
-                        [class.active]="type.id === typeIdSelected" 
+                        [class.active]="type.id === this.shopParams.typeId" 
                          (click)="onTypeSelected(type.id)">
                     {{type.name}}
                 </li>
@@ -61,12 +61,13 @@
             
         </section>
 
-        <section class="col-lg-9 col-md-8 col-8">
-            <div class="row row-cols-xxl-4 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1 g-3">
+        <section class="col-lg-9 col-8 gx-4 ps-lg-4 ps-md-3 ps-sm-2 ps-1">
+            <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1 g-3 mb-4">
                 <div class="col" *ngFor="let product of products">
                     <app-product-item [product]="product"></app-product-item>
                 </div>
             </div>
+
         </section>
     </div>
 </div>

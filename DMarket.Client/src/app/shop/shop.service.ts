@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { Pagination } from '../shared/models/pagination';
 import { Product } from '../shared/models/product';
 import { environment } from '../../environments/environment';
-import { ProductBrand } from '../shared/models/product-brand';
-import { ProductType } from '../shared/models/product-type';
+import { ProductBrand } from '../shared/models/productBrand';
+import { ProductType } from '../shared/models/productType';
+import { ShopParams } from '../shared/models/shopParams';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,15 @@ export class ShopService {
  
   constructor(private http: HttpClient) {}
 
-  getProducts(brandId: string, typeId: string) {
+  getProducts(p: ShopParams) {
     let params = new HttpParams()
       .set('pageNumber', 1)
       .set('pageSize', 12);
-    if (brandId && brandId != "All") params = params.set('brandIdFilter', brandId);
-    if (typeId && typeId != "All") params = params.set('typeIdFilter', typeId);
-    
+    if (p.brandId && p.brandId != "All") params = params.set('brandIdFilter', p.brandId);
+    if (p.typeId && p.typeId != "All") params = params.set('typeIdFilter', p.typeId);
+    if (p.sortOrder) params = params.set('sortOrder', p.sortOrder);
+    if (p.sortKey) params = params.set('sortKey', p.sortKey);
+
     return this.http.get<Pagination<Product[]>>(environment.apiBaseUrl + "products", {params: params});
   }
 

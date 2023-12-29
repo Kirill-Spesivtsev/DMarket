@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../shared/models/product';
 import { ShopService } from './shop.service';
-import { ProductBrand } from '../shared/models/product-brand';
-import { ProductType } from '../shared/models/product-type';
+import { ProductBrand } from '../shared/models/productBrand';
+import { ProductType } from '../shared/models/productType';
+import { ShopParams } from '../shared/models/shopParams';
 
 @Component({
   selector: 'app-shop',
@@ -14,18 +15,20 @@ export class ShopComponent implements OnInit{
   brands: ProductBrand[] = [];
   types: ProductType[] = [];
 
-  brandIdSecected: string = "";
-  typeIdSelected: string = "";
+  shopParams = new ShopParams();
 
   minPrice: number | null = null;
   maxPrice: number | null = null;
-  
+
   sortOptions = [
-    "Alphabetical"
+    {name: "Title", value: "title"},
+    {name: "Id", value: "id"},
+    {name: "Price", value: "price"},
+    {name: "Created", value: "created_time"}
   ]
+
   ordAsc: boolean = true;
   
-
 
   constructor(private shopService: ShopService){}
   
@@ -36,10 +39,12 @@ export class ShopComponent implements OnInit{
   }
 
   getProducts(): void {
-    this.shopService.getProducts(this.brandIdSecected, this.typeIdSelected).subscribe({
-      next: response => this.products = response.data,
-      error: error => console.log(error)
-    })
+    this.shopParams.sortOrder = this.ordAsc ? "asc" : "desc";
+    this.shopService.getProducts(this.shopParams)
+        .subscribe({
+          next: response => this.products = response.data,
+          error: error => console.log(error)
+        })
   }
 
   getBrands(): void {
@@ -57,12 +62,12 @@ export class ShopComponent implements OnInit{
   }
 
   onBrandSelected(brandId: string){
-    this.brandIdSecected = brandId;
+    this.shopParams.brandId = brandId;
     this.getProducts();
   }
 
   onTypeSelected(typeId: string){
-    this.typeIdSelected = typeId;
+    this.shopParams.typeId = typeId;
     this.getProducts();
   }
 
@@ -75,6 +80,11 @@ export class ShopComponent implements OnInit{
   onMaxPriceSet(price: string){
     this.maxPrice = parseInt(price, 10);
     //this.getProducts();
+  }
+
+  onSortSelected(event: any){
+    this.shopParams.sortOrder = event.target.value;
+    this.getProducts();
   }
 
 }
