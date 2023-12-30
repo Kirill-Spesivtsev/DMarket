@@ -11,7 +11,7 @@ import { ShopParams } from '../shared/models/shopParams';
   providedIn: 'root'
 })
 export class ShopService {
- 
+
   constructor(private http: HttpClient) {}
 
   getProducts(p: ShopParams) {
