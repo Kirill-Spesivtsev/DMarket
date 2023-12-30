@@ -22,6 +22,7 @@ export class ShopService {
     if (p.typeId && p.typeId != "All") params = params.set('typeIdFilter', p.typeId);
     if (p.sortOrder) params = params.set('sortOrder', p.sortOrder);
     if (p.sortKey) params = params.set('sortKey', p.sortKey);
+    if (p.searchQuery) params = params.set('searchString', p.searchQuery);
     console.log(p.sortOrder);
 
     return this.http.get<Pagination<Product[]>>(environment.apiBaseUrl + "products", {params: params});

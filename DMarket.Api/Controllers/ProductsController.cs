@@ -28,7 +28,7 @@ namespace DMarket.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ProductDto>>> GetProducts([FromQuery]ProductQueryParamsDto op)
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts([FromQuery]ProductQueryParamsDto op)
         {
             var products = _repository.GetAllProductsAsync()
                 .SearchProducts(op.SearchString)

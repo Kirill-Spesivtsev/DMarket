@@ -5,4 +5,5 @@ export class ShopParams{
     pageSize = 12;
     sortKey = "name";
     sortOrder = "asc";
+    searchQuery = "";
 }

@@ -9,9 +9,11 @@ namespace DMarket.Api.Helpers
         {            
             if (!string.IsNullOrEmpty(searchString))
             {
-                return list.Where( p => p.Name.Contains(searchString) 
-                    || p.Description.Contains(searchString)
-                    || p.CreatedTime.ToLocalTime().Date.ToString().Contains(searchString));
+                searchString = searchString.ToUpper();
+
+                return list.Where( p => p.Name.ToUpper().Contains(searchString) 
+                    || p.Description.ToUpper().Contains(searchString)
+                    || p.CreatedTime.ToString().ToUpper().Contains(searchString));
             }
             return list;
         }

@@ -14,7 +14,7 @@ namespace DMarket.Api.Helpers
                 TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize),
                 HasPrevious = pageNumber > 1,
                 HasNext = pageNumber < pageSize,
-                TotalElements = list.Count(),
+                TotalElements = totalCount,
                 Data = list.Skip((pageNumber - 1) * pageSize).Take(pageSize)
             };
         }

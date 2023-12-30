@@ -15,11 +15,11 @@ namespace DMarket.Api.Helpers
         {   
             if (!string.IsNullOrWhiteSpace(titleFilter))
             {
-                list = list.Where(p => p.Name.Contains(titleFilter));
+                list = list.Where(p => p.Name.ToUpper().Contains(titleFilter.ToUpper()));
             }
             if (!string.IsNullOrWhiteSpace(descriptionFilter))
             {
-                list = list.Where(p => p.Description.Contains(descriptionFilter));
+                list = list.Where(p => p.Description.ToUpper().Contains(descriptionFilter.ToUpper()));
             }
             if (minPriceFilter.HasValue)
             {
