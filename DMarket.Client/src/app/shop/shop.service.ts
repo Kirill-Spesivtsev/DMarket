@@ -23,9 +23,12 @@ export class ShopService {
     if (p.sortOrder) params = params.set('sortOrder', p.sortOrder);
     if (p.sortKey) params = params.set('sortKey', p.sortKey);
     if (p.searchQuery) params = params.set('searchString', p.searchQuery);
-    console.log(p.sortOrder);
 
     return this.http.get<Pagination<Product[]>>(environment.apiBaseUrl + "products", {params: params});
+  }
+
+  getProduct(id : string){
+    return this.http.get<Product>(environment.apiBaseUrl + 'products/' + id)
   }
 
   getBrands() {

@@ -9,5 +9,6 @@
         public string ImageUrl { get; set; }
         public string ProductType { get; set; }
         public string ProductBrand { get; set; }
+        public DateTimeOffset CreatedTime { get; set; }
     }
 }
