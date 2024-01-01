@@ -12,6 +12,8 @@ import { ShopParams } from '../shared/models/shopParams';
 })
 export class ShopService {
 
+  baseUrl = environment.apiBaseUrl;
+
   constructor(private http: HttpClient) {}
 
   getProducts(p: ShopParams) {
@@ -24,18 +26,18 @@ export class ShopService {
     if (p.sortKey) params = params.set('sortKey', p.sortKey);
     if (p.searchQuery) params = params.set('searchString', p.searchQuery);
 
-    return this.http.get<Pagination<Product[]>>(environment.apiBaseUrl + "products", {params: params});
+    return this.http.get<Pagination<Product[]>>(this.baseUrl + "products", {params: params});
   }
 
   getProduct(id : string){
-    return this.http.get<Product>(environment.apiBaseUrl + 'products/' + id)
+    return this.http.get<Product>(this.baseUrl + 'products/' + id)
   }
 
   getBrands() {
-    return this.http.get<ProductBrand[]>(environment.apiBaseUrl + "products/brands");
+    return this.http.get<ProductBrand[]>(this.baseUrl + "products/brands");
   }
 
   getTypes() {
-    return this.http.get<ProductType[]>(environment.apiBaseUrl + "products/types");
+    return this.http.get<ProductType[]>(this.baseUrl + "products/types");
   }
 }
