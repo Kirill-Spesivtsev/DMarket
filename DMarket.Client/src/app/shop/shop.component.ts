@@ -18,10 +18,10 @@ export class ShopComponent implements OnInit{
   brands: ProductBrand[] = [];
   types: ProductType[] = [];
 
-  shopParams = new ShopParams();
+  shopParams: ShopParams = new ShopParams();
 
-  minPrice: number | null = null;
-  maxPrice: number | null = null;
+  minPrice?: number = undefined;
+  maxPrice?: number = undefined;
 
   sortOptions = [
     {name: "Name", value: "name"},
@@ -30,10 +30,10 @@ export class ShopComponent implements OnInit{
     {name: "Created", value: "created_time"}
   ]
 
+  ordAsc: boolean = true;
+
   totalCount = 0;
 
-  ordAsc: boolean = true;
-  
   pageItemNumberFirst = 0;
   pageitemnumberLast = 0;
 
@@ -47,7 +47,8 @@ export class ShopComponent implements OnInit{
   }
 
   getProducts(): void {
-    this.shopParams.sortOrder = this.ordAsc ? "asc" : "desc";
+    this.shopParams.sortOrder = this?.ordAsc ? "asc" : "desc";
+    if (!this.shopParams.sortKey) this.shopParams.sortKey = "name";
     this.shopService.getProducts(this.shopParams)
         .subscribe({
           next: response => {
@@ -55,6 +56,7 @@ export class ShopComponent implements OnInit{
             this.shopParams.pageNumber = response.pageNumber;
             this.shopParams.pageSize = response.pageSize;
             this.totalCount = response.totalElements;
+
             this.pageItemNumberFirst = (this.shopParams.pageNumber - 1) * this.shopParams.pageSize + 1;
             this.pageitemnumberLast = this.shopParams.pageNumber * this.shopParams.pageSize > this.totalCount ?
               this.totalCount :
