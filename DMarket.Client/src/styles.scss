@@ -1,13 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
-@import "./node_modules/bootstrap/scss/bootstrap";
+//@import "../node_modules/bootstrap/scss/bootstrap";
 
 /* Importing Datepicker SCSS file. */
-@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+@import "../node_modules/ngx-bootstrap/datepicker/bs-datepicker";
 
 
-/* Custom button */
+@import "../node_modules/bootswatch/dist/united/variables";
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootswatch/dist/united/bootswatch";
+
+/*
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 $custom-orange:rgb(255, 115, 0);
@@ -20,5 +24,5 @@ $custom-orange:rgb(255, 115, 0);
     @include button-outline-variant($custom-orange, #222222, lighten($custom-orange,5%), $custom-orange);
 }
 
-
+*/
 

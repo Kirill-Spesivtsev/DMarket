@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './error-handling/not-found/not-found.component';
 import { ServerErrorComponent } from './error-handling/server-error/server-error.component';
 import { BadRequestComponent } from './error-handling/bad-request/bad-request.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -17,7 +18,11 @@ import { BadRequestComponent } from './error-handling/bad-request/bad-request.co
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ToastrModule.forRoot({
+      positionClass: "toast-bottom-left",
+      preventDuplicates: true
+    })
   ],
   exports:[
     NavBarComponent,

@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { BadRequestComponent } from './core/error-handling/bad-request/bad-request.component';
 import { ServerErrorComponent } from './core/error-handling/server-error/server-error.component';
-import { NotFoundError } from 'rxjs';
+import { NotFoundComponent } from './core/error-handling/not-found/not-found.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
-  {path: "not-found", component: NotFoundError},
+  {path: "not-found", component: NotFoundComponent},
   {path: "bad-request", component: BadRequestComponent},
   {path: "server-error", component: ServerErrorComponent},
   {path: "shop", loadChildren: () => import("./shop/shop.module").then(m => m.ShopModule)},

@@ -1,52 +1,52 @@
-.ec-h-50{
+
+
+.height-50{
     height: 50px;
 }
 
-.ec-h-65{
+.height-65{
     height: 65px;
 }
 
-.ec-w-40{
+.width-40{
     width: 50px;
 }
 
-.ec-nav-link{
+.nav-link-panel{
     text-decoration: none !important;
     color: rgb(33, 37, 41) !important;
-    transform: scale(1); 
+    transform: scale(1);
+    font-weight: 300 !important; 
     transition: transform 0.15s ease-out;
 
-    &.hover{
+    &:hover{
     transform: scale(1.2);
+    font-weight: 300 !important; 
     transition: transform 0.15s ease-out;
     }
 
     &.active{
-    color: orange !important;
+    color: #e95420 !important;
     }
 }
 
-.ec-logo{
+
+.logo-pic{
     cursor: pointer;
 }
 
-.ec-nav-link:hover{
-    transform: scale(1.2);
-    transition: transform 0.15s ease-out;
-}
-
-.ec-cart-number{
+.nav-cart-number{
     position: absolute;
     min-height: 25px;
     min-width: 25px;
     border-radius: 50%;
-    background-color: rgb(255, 115, 0);
+    background-color: #e95420;
     color: white;
     text-align: center;
     top: -10px;
     left: 20px;
 }
-
+/*
 @import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
 
 $custom-orange:rgb(255, 115, 0);
@@ -57,4 +57,4 @@ $custom-orange:rgb(255, 115, 0);
 
 .btn-outline-orange {
     @include button-outline-variant($custom-orange, #222222, lighten($custom-orange,5%), $custom-orange);
-}
+}*/
