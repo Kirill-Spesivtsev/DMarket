@@ -11,12 +11,19 @@ export class HomeComponent {
 
   baseUrl = environment.apiBaseUrl;
 
+  validationErrors: any;
+
   constructor(private http: HttpClient){}
 
   get400ValidationError(){
     this.http.get(this.baseUrl + "products/fwewf").subscribe({
       next: response => console.log(response),
-      error: error => console.log(error)
+      error: error => {
+        this.validationErrors = Object.keys(error.errors).map(function(key){
+          return error.errors[key];
+        });
+        console.log(this.validationErrors);
+      }
     })
   }
 

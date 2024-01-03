@@ -1,28 +1,29 @@
 <div class="container ">
     <div class="row d-flex align-items-center gx-5 error-page-body">
-
+ 
     <div class="col-md-6 col-12 ps-5">
         <div class="error-page-header">
-            <h1 class="error-page-code"><strong>404</strong></h1>
-            <h3 class="error-page-title">Not found</h3>
+            <h1 class="error-page-code"><strong>403</strong></h1>
+            <h3 class="error-page-title">Forbidden</h3>
         </div>
         <div>
             <h4 class="mt-5" *ngIf="error?.detail">{{error?.detail}}</h4>
-            <h4 class="mt-5" *ngIf="!error?.detail">Resource you are looking for was not found on this server</h4>
+            <h4 class="mt-5" *ngIf="!error?.detail">You do not have enough privileges to perform this action. If you think it's an error, please contact site administractor</h4>
             <div class="text-center">
-            <button class="btn btn-lg btn-outline-primary my-3" routerLink="/">
+                <button class="btn btn-lg btn-outline-primary my-3" routerLink="/">
                 Go Home <i class="fa fa-home"></i>
-            </button>
+                </button>
             </div>
         </div>
     </div>
-
+    
     <div class="col-md-6 col-12">
         <div class="col-md-12">
-            <img src="/assets/images/error-pages/not_found.png" width="100%">
+            <img src="/assets/images/error-pages/forbidden.png" width="100%">
         </div>
     </div>
-   
+    
     </div>
-</div>
-
+ </div>
+ 
+ 

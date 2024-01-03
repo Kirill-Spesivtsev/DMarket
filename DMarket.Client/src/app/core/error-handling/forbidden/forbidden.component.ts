@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-bad-request',
-  templateUrl: './bad-request.component.html',
-  styleUrls: ['../errors-common.scss', './bad-request.component.scss']
+  selector: 'app-forbidden',
+  templateUrl: './forbidden.component.html',
+  styleUrls: ['./forbidden.component.scss']
 })
-export class BadRequestComponent {
+export class ForbiddenComponent {
 
   error: any;
 
