@@ -1,7 +1,7 @@
 ﻿using DMarket.Core.Exceptions;
 using System.Net;
 
-namespace ProductMicroservice.Domain.Exceptions
+namespace DMarket.Core.Exceptions
 {
     public class UnauthorizedException : CustomClientException
     {

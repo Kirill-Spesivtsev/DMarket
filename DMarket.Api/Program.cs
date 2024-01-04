@@ -1,4 +1,6 @@
 using DMarket.Api.Helpers;
+using DMarket.Application.Abstractions;
+using DMarket.Application.Services;
 using DMarket.Core.Entities.Identity;
 using DMarket.Core.Exceptions;
 using DMarket.Infrastructure.Abstractions;
@@ -10,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,13 +27,30 @@ builder.Services.AddProblemDetails(options =>
         && (d.Status is null or >= 400);
     options.Map<NotFoundException>(ex => new ProblemDetails() { 
         Title = ex.Title, Detail = ex.Message, Status = ex.Status, Type = ex.Type });
+    options.Map<BadRequestException>(ex => new ProblemDetails() { 
+        Title = ex.Title, Detail = ex.Message, Status = ex.Status, Type = ex.Type });
+    options.Map<ConflictException>(ex => new ProblemDetails() { 
+        Title = ex.Title, Detail = ex.Message, Status = ex.Status, Type = ex.Type });
+    options.Map<UnauthorizedException>(ex => new ProblemDetails() { 
+        Title = ex.Title, Detail = ex.Message, Status = ex.Status, Type = ex.Type });
 });
 
 
 builder.Services.AddDbContext<MarketDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddIdentityCore<ApplicationUser>()
+builder.Services.AddIdentityCore<ApplicationUser>(options =>
+    {
+        options.SignIn.RequireConfirmedAccount = false;
+        options.Password.RequireDigit = false;
+        options.Password.RequireUppercase = false;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireLowercase = false;
+        options.Password.RequiredLength = 5;
+        options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+        options.Lockout.MaxFailedAccessAttempts = 10;
+        options.Lockout.AllowedForNewUsers = true;
+    })
     .AddEntityFrameworkStores<MarketDbContext>()
     .AddSignInManager<SignInManager<ApplicationUser>>();
 
@@ -54,6 +74,8 @@ builder.Services.AddAuthorization();
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
+builder.Services.AddScoped<ITokenService, TokenService>();
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddCors(options => {
@@ -63,9 +85,36 @@ builder.Services.AddCors(options => {
     });
 });
 
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Enter JWT Token",
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 

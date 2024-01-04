@@ -17,7 +17,7 @@ namespace DMarket.Application.Services
             _configuration = configuration;
         }
 
-        public string CreateToken(ApplicationUser user)
+        public string GenerateToken(ApplicationUser user)
         {
             var claims = new List<Claim>
             {
@@ -27,7 +27,7 @@ namespace DMarket.Application.Services
 
             var key = Encoding.UTF8.GetBytes(_configuration["JwtTokenOrigin:Key"]!);
 
-            var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature);
+            var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {

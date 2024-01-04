@@ -4,6 +4,7 @@ using DMarket.Api.Helpers;
 using DMarket.Core.Entities;
 using DMarket.Core.Exceptions;
 using DMarket.Infrastructure.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
