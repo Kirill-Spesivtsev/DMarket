@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DMarket.Infrastructure.Data
+namespace DMarket.Infrastructure.Configuration
 {
     internal class ProductConfiguration : IEntityTypeConfiguration<Product>
     {
@@ -19,6 +19,7 @@ namespace DMarket.Infrastructure.Data
             builder.Property(p => p.Description).IsRequired();
             builder.Property(p => p.ImageUrl).IsRequired();
             builder.Property(p => p.Price).HasColumnType("decimal(19,5)");
+
             builder.HasOne(p => p.ProductBrand).WithMany()
                 .HasForeignKey(p => p.ProductBrandId);
             builder.HasOne(p => p.ProductType).WithMany()
