@@ -6,6 +6,8 @@ using DMarket.Core.Exceptions;
 using DMarket.Infrastructure.Abstractions;
 using DMarket.Infrastructure.Data;
 using DMarket.Infrastructure.Repositories;
+using FluentValidation.AspNetCore;
+using FluentValidation;
 using Hellang.Middleware.ProblemDetails;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -13,8 +15,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Globalization;
 using System.Security.Claims;
 using System.Text;
+using DMarket.Api.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -74,10 +78,6 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddAuthorization();
 
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-
-builder.Services.AddScoped<ITokenService, TokenService>();
-
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddCors(options => {
@@ -86,6 +86,12 @@ builder.Services.AddCors(options => {
         policy.AllowAnyHeader().AllowAnyMethod().WithOrigins(@"https://localhost:7113", @"https://localhost:4200");
     });
 });
+
+builder.Services.AddFluentValidationAutoValidation(op => 
+    op.DisableDataAnnotationsValidation = true)
+    .AddFluentValidationClientsideAdapters();
+builder.Services.AddValidatorsFromAssemblyContaining<ProductDtoValidator>();
+ValidatorOptions.Global.LanguageManager.Culture = new CultureInfo("en-GB");
 
 builder.Services.AddSwaggerGen(options =>
 {
@@ -117,6 +123,8 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 var app = builder.Build();
 
