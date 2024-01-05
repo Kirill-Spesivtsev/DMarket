@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DMarket.Api.DTO;
+using DMarket.Api.Helpers;
 using DMarket.Application.Abstractions;
 using DMarket.Core.Entities.Identity;
 using DMarket.Core.Exceptions;
@@ -7,10 +8,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DMarket.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/account")]
     [ApiController]
     public class AccountController : ControllerBase
     {
@@ -88,6 +90,60 @@ namespace DMarket.Api.Controllers
             };
 
             return Ok(result);
+        }
+
+        
+        [HttpGet("email-exists")]
+        public async Task<ActionResult<bool>> CheckEmailExistsAsync([FromQuery] string email)
+        {
+            return Ok(await _userManager.FindByEmailAsync(email) != null);
+        }
+
+        
+        [HttpGet]
+        [Authorize]
+        public async Task<ActionResult<UserDto>> GetCurrentUser()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            var result = new UserDto
+            {
+                Email = user.Email,
+                Token = _tokenService.GenerateToken(user),
+                DisplayName = user.DisplayName
+            };
+
+            return Ok(result);
+        }
+
+        [HttpGet("address")]
+        [Authorize]
+        public async Task<ActionResult<AddressDto>> GetUserAddress()
+        {
+            var user = await _userManager.GetUserWithIncludeAsync(User);
+
+            return Ok(_mapper.Map<Address, AddressDto>(user?.Address!));
+        }
+
+
+        
+        [HttpPut("address")]
+        [Authorize]
+        public async Task<ActionResult<AddressDto>> UpdateUserAddress(AddressDto address)
+        {
+            var user = await _userManager.GetUserWithIncludeAsync(User);
+
+            user.Address = _mapper.Map<AddressDto, Address>(address);
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (!result.Succeeded)
+            {
+                throw new BadRequestException("Invalid address parameters were provided");
+            }
+
+            return Ok(_mapper.Map<AddressDto>(user.Address));
+            
         }
 
     }
