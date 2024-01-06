@@ -1,5 +1,13 @@
-.btn-amount-changer{
+.button-amount-changer{
     color: #e95420;
     cursor: pointer; 
     font-size: 2em;
+}
+
+.product-details-image-container{
+    overflow: hidden;
+    border-radius: 20px;
+    max-height: 65vh;
+    max-width: 65vh;
+    float: right;
 }

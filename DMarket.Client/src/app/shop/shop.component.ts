@@ -49,21 +49,23 @@ export class ShopComponent implements OnInit{
   getProducts(): void {
     this.shopParams.sortOrder = this?.ordAsc ? "asc" : "desc";
     if (!this.shopParams.sortKey) this.shopParams.sortKey = "name";
-    this.shopService.getProducts(this.shopParams)
-        .subscribe({
-          next: response => {
-            this.products = response.data;
-            this.shopParams.pageNumber = response.pageNumber;
-            this.shopParams.pageSize = response.pageSize;
-            this.totalCount = response.totalElements;
+    this.shopService.getProducts(this.shopParams).subscribe({
+      next: response => {
+        this.products = response.data;
+        this.shopParams.pageNumber = response.pageNumber;
+        this.shopParams.pageSize = response.pageSize;
+        this.totalCount = response.totalElements;
+        this.fillPageListingHeader();
+      },
+      error: error => console.log(error)
+    })
+  }
 
-            this.pageItemNumberFirst = (this.shopParams.pageNumber - 1) * this.shopParams.pageSize + 1;
-            this.pageitemnumberLast = this.shopParams.pageNumber * this.shopParams.pageSize > this.totalCount ?
-              this.totalCount :
-              this.shopParams.pageNumber * this.shopParams.pageSize;
-          },
-          error: error => console.log(error)
-        })
+  fillPageListingHeader(): void {
+    this.pageItemNumberFirst = (this.shopParams.pageNumber - 1) * this.shopParams.pageSize + 1;
+    this.pageitemnumberLast = this.shopParams.pageNumber * this.shopParams.pageSize > this.totalCount ?
+      this.totalCount :
+      this.shopParams.pageNumber * this.shopParams.pageSize;
   }
 
   getBrands(): void {
