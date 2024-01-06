@@ -28,12 +28,12 @@
                 
                 <h5 class="text-dark ms-3 mt-5 mb-3">Sort</h5>
                 <div class="d-md-flex d-block justify-content-end g-3 mb-5">
-                    <select class="form-select border-primary-subtle" (change)="onSortSelected($event)">
+                    <select class="form-select border-primary-subtle" (change)="onSortKeySelected($event)">
                         <option *ngFor="let sort of sortOptions" [value]="sort.value">
                             {{sort.name}}
                         </option>
                     </select>
-                    <button class="btn btn-outline-primary float-end" (click)="ordAsc = !ordAsc;onSortSelected($event)">
+                    <button class="btn btn-outline-primary float-end" (click)="onSortOrderSelected()">
                         <div *ngIf="ordAsc then ascending_order else descending_order"></div>
                         <ng-template #ascending_order>
                             <i class="fa fa fa-sort-amount-asc"></i>

@@ -102,8 +102,13 @@ export class ShopComponent implements OnInit{
     //this.getProducts();
   }
 
-  onSortSelected(event: any){
+  onSortKeySelected(event: any){
     this.shopParams.sortKey = event.target.value;
+    this.getProducts();
+  }
+
+  onSortOrderSelected(){
+    this.ordAsc = !this.ordAsc;
     this.getProducts();
   }
 
