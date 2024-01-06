@@ -11,6 +11,16 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "../node_modules/bootswatch/dist/united/bootswatch";
 
+
+/* Breadcrumb */
+label.xng-breadcrumb-trail {
+    color: orange;
+}
+
+a.xng-breadcrumb-link{
+    text-decoration: none !important;
+}
+
 /*
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 

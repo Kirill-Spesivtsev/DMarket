@@ -8,6 +8,8 @@ import { BadRequestComponent } from './error-handling/bad-request/bad-request.co
 import { ToastrModule } from 'ngx-toastr';
 import { UnauthorizedComponent } from './error-handling/unauthorized/unauthorized.component';
 import { ForbiddenComponent } from './error-handling/forbidden/forbidden.component';
+import { PageHeaderComponent } from './page-header/page-header.component';
+import { BreadcrumbModule } from 'xng-breadcrumb';
 
 
 
@@ -19,6 +21,7 @@ import { ForbiddenComponent } from './error-handling/forbidden/forbidden.compone
     BadRequestComponent,
     UnauthorizedComponent,
     ForbiddenComponent,
+    PageHeaderComponent,
   ],
   imports: [
     CommonModule,
@@ -26,13 +29,15 @@ import { ForbiddenComponent } from './error-handling/forbidden/forbidden.compone
     ToastrModule.forRoot({
       positionClass: "toast-bottom-left",
       preventDuplicates: true
-    })
+    }),
+    BreadcrumbModule
   ],
   exports:[
     NavBarComponent,
     NotFoundComponent,
     ServerErrorComponent,
     BadRequestComponent,
+    PageHeaderComponent
   ]
 })
 export class CoreModule { }

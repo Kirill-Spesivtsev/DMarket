@@ -4,8 +4,8 @@
     height: 50px;
 }
 
-.height-65{
-    height: 65px;
+.navbar-height{
+    height: 70px;
 }
 
 .width-40{
@@ -16,12 +16,10 @@
     text-decoration: none !important;
     color: rgb(33, 37, 41) !important;
     transform: scale(1);
-    font-weight: 300 !important; 
     transition: transform 0.15s ease-out;
 
     &:hover{
     transform: scale(1.2);
-    font-weight: 300 !important; 
     transition: transform 0.15s ease-out;
     }
 
