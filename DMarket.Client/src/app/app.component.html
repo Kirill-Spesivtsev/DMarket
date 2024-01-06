@@ -1,6 +1,8 @@
+<ngx-spinner type="square-jelly-box" bdColor="rgba(255,255,255,0.8)" size="large" color="#e95420" [fullScreen]="true"></ngx-spinner>
+
 <app-nav-bar></app-nav-bar>
 
-
-<div id="body-container" class="container">
-    <router-outlet></router-outlet>
+<div id="body-container">
+    <app-page-header></app-page-header>
+    <router-outlet class="container"></router-outlet>
 </div>

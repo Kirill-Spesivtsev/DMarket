@@ -10,6 +10,7 @@ import { UnauthorizedComponent } from './error-handling/unauthorized/unauthorize
 import { ForbiddenComponent } from './error-handling/forbidden/forbidden.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { BreadcrumbModule } from 'xng-breadcrumb';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -30,14 +31,16 @@ import { BreadcrumbModule } from 'xng-breadcrumb';
       positionClass: "toast-bottom-left",
       preventDuplicates: true
     }),
-    BreadcrumbModule
+    BreadcrumbModule, 
+    NgxSpinnerModule
   ],
   exports:[
     NavBarComponent,
     NotFoundComponent,
     ServerErrorComponent,
     BadRequestComponent,
-    PageHeaderComponent
+    PageHeaderComponent,
+    NgxSpinnerModule
   ]
 })
 export class CoreModule { }
