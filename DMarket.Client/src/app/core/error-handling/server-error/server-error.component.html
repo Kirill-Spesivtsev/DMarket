@@ -6,7 +6,7 @@
             <h1 class="error-page-code"><strong>500</strong></h1>
             <h3 class="error-page-title">Server Error</h3>
         </div>
-        <div>
+        <div class="flex-column">
             <h4 class="mt-5" *ngIf="error?.detail">{{error?.detail}}</h4>
             <h4 class="mt-5" *ngIf="!error?.detail">Resource you are looking for was not found on this server</h4>
             <div class="text-center">

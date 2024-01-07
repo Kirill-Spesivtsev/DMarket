@@ -6,7 +6,7 @@
             <h1 class="error-page-code"><strong>401</strong></h1>
             <h3 class="error-page-title">Unauthorized</h3>
         </div>
-        <div>
+        <div class="flex-column">
             <h4 class="mt-5" *ngIf="error?.detail">{{error?.detail}}</h4>
             <h4 class="mt-5" *ngIf="!error?.detail">You need to be authorized to perform this action. Please register or log in</h4>
             <div class="text-center">

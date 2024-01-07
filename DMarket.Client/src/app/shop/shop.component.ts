@@ -30,7 +30,7 @@ export class ShopComponent implements OnInit{
     {name: "Created", value: "created_time"}
   ]
 
-  ordAsc: boolean = true;
+  IsOrderAsc: boolean = true;
 
   totalCount = 0;
 
@@ -47,7 +47,7 @@ export class ShopComponent implements OnInit{
   }
 
   getProducts(): void {
-    this.shopParams.sortOrder = this?.ordAsc ? "asc" : "desc";
+    this.shopParams.sortOrder = this?.IsOrderAsc ? "asc" : "desc";
     if (!this.shopParams.sortKey) this.shopParams.sortKey = "name";
     this.shopService.getProducts(this.shopParams).subscribe({
       next: response => {
@@ -56,6 +56,7 @@ export class ShopComponent implements OnInit{
         this.shopParams.pageSize = response.pageSize;
         this.totalCount = response.totalElements;
         this.fillPageListingHeader();
+        //window.scrollTo(0, 0);
       },
       error: error => console.log(error)
     })
@@ -110,7 +111,7 @@ export class ShopComponent implements OnInit{
   }
 
   onSortOrderSelected(){
-    this.ordAsc = !this.ordAsc;
+    this.IsOrderAsc = !this.IsOrderAsc;
     this.getProducts();
   }
 

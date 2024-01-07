@@ -18,12 +18,12 @@ export class ErrorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        let msg = error?.error?.detail ? error.error.detail : error?.error?.title;
+        let msg = error.error?.detail ? error.error.detail : error.error?.title;
 
         if (error) {
           if (error.status === 400) {
             //this.router.navigateByUrl("/error/bad-request")
-            if(error.error.errors){
+            if (error.error.errors){
               //this.toastr.error(msg, error.status.toString());
               throw error.error;
             } else {
@@ -31,14 +31,32 @@ export class ErrorInterceptor implements HttpInterceptor {
             }
           }
 
+          if (error.status === 401) {
+            this.toastr.error(msg, error.status.toString());
+            this.router.navigateByUrl("/account/login");
+          }
+
+          if (error.status === 403) {
+            this.toastr.error(msg, error.status.toString());
+          }
+
           if (error.status === 404) {
-            const navExtras: NavigationExtras = {state: {error: error.error}};
-            this.router.navigateByUrl("/error/not-found", navExtras);
+            if (error.error.detail){
+              this.toastr.error(msg, error.status.toString());
+            } else {
+              const navExtras: NavigationExtras = {state: {error: error.error}};
+              this.router.navigateByUrl("/error/not-found", navExtras);
+            }
+            
           }
 
           if (error.status === 500) {
-            const navExtras: NavigationExtras = {state: {error: error.error}};
-            this.router.navigateByUrl("error/server-error", navExtras)
+            if (error.error.detail){
+              this.toastr.error(msg, error.status.toString());
+            } else {
+              const navExtras: NavigationExtras = {state: {error: error.error}};
+              this.router.navigateByUrl("error/server-error", navExtras)
+            }
           }
         }
         

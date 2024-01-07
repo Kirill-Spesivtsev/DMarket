@@ -16,8 +16,15 @@
             <i class="fa fa-shopping-cart fa-2x text-dark"></i>
             <div class="nav-cart-number">9</div>
         </a>
-        <a routerLink="/account/login" class="btn btn-primary me-2">Login</a>
-        <a routerLink="/account/register" class="btn btn-primary me-md-3 me-0">Sign up</a>
-    </div>
+        <ng-container *ngIf="(accountService.currentUser$ | async) === null">
+            <a routerLink="/account/login" class="btn btn-primary me-2">Login</a>
+            <a routerLink="/account/register" class="btn btn-primary me-md-3 me-0">Sign up</a>    
+        </ng-container>
+
+        <ng-container *ngIf="(accountService.currentUser$ | async) as user">
+            <span class="fs-4"> Welcome {{user.displayName}} </span>
+            <a routerLink="/account/loout" class="btn btn-primary me-2">Logout</a>  
+        </ng-container>
+        </div>
 
 </nav>

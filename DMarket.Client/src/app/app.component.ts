@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './shared/models/product';
+import { AccountService } from './account/account.service';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +11,16 @@ export class AppComponent implements OnInit {
   title = 'DMarket';
   products: Product[] = [];
 
-  constructor(){}
+  constructor(private accoutService: AccountService){}
 
   ngOnInit(): void {
-
+    this.fetchCurrentUser();
   }
+
+  fetchCurrentUser(){
+    const jwtToken = localStorage.getItem('jwtToken');
+    if (jwtToken) this.accoutService.fetchCurrentUser(jwtToken).subscribe();
+  }
+
 }
  
