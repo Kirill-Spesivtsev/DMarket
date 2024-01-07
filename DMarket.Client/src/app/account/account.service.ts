@@ -59,14 +59,10 @@ export class AccountService {
     )
   }
 
-    logout(values: any){
-    return this.http.post<User>(this.baseUrl + "account/logout", values).pipe(
-      map( user => {
-        localStorage.removeItem('jwtToken');
-        this.currentUserSource.next(null);
-        this.router.navigateByUrl('/');
-      })
-    )
+  logout(){
+    localStorage.removeItem('jwtToken');
+    this.currentUserSource.next(null);
+    this.router.navigateByUrl('/');
   }
 
   checkEmailExistence(email: string){

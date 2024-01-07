@@ -22,8 +22,8 @@
         </ng-container>
 
         <ng-container *ngIf="(accountService.currentUser$ | async) as user">
-            <span class="fs-4"> Welcome {{user.displayName}} </span>
-            <a routerLink="/account/loout" class="btn btn-primary me-2">Logout</a>  
+            <span class="fs-4">{{user.displayName}}</span>
+            <a (click)="logout()" class="btn btn-primary ms-4 me-2">Logout</a>  
         </ng-container>
         </div>
 
