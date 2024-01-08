@@ -22,7 +22,6 @@ export class HomeComponent {
         this.validationErrors = Object.keys(error.errors).map(function(key){
           return error.errors[key];
         });
-        console.log(this.validationErrors);
       }
     })
   }

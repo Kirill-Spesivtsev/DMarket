@@ -46,7 +46,6 @@ export class AccountService {
       map( user => {
         localStorage.setItem('jwtToken', user.token);
         this.currentUserSource.next(user);
-        this.router.navigateByUrl('/');
       })
     )
   }
@@ -67,7 +66,7 @@ export class AccountService {
   }
 
   checkEmailExistence(email: string){
-    return this.http.get<boolean>(this.baseUrl + "account/email-exists" + "?emai=" + email)
+    return this.http.get<boolean>(this.baseUrl + "account/email-exists" + "?email=" + email)
   }
 
 }

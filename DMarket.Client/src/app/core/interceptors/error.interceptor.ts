@@ -22,9 +22,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
         if (error) {
           if (error.status === 400) {
-            //this.router.navigateByUrl("/error/bad-request")
             if (error.error.errors){
-              //this.toastr.error(msg, error.status.toString());
               throw error.error;
             } else {
               this.toastr.error(msg, error.status.toString());
@@ -47,7 +45,12 @@ export class ErrorInterceptor implements HttpInterceptor {
               const navExtras: NavigationExtras = {state: {error: error.error}};
               this.router.navigateByUrl("/error/not-found", navExtras);
             }
-            
+          }
+
+          if (error.status === 409) {
+            if (error.error.detail){
+              throw error.error;
+            }
           }
 
           if (error.status === 500) {
