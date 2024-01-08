@@ -3,10 +3,13 @@ import { CommonModule } from '@angular/common';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TextInputComponent } from './text-input/text-input.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    TextInputComponent
+  ],
   imports: [
     CommonModule,
     PaginationModule.forRoot(), 
@@ -15,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [
     PaginationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TextInputComponent
   ]
   
 })

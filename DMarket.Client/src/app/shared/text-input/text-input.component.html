@@ -1,0 +1,11 @@
+<div class="form-floating mb-3">
+    <input type="{{type}}"
+        [formControl]="control"
+        placeholder="{{label}}"
+        class="form-control rounded rounded-5"
+        [ngClass]="(control.touched) ? (control.invalid ? 'is-invalid' : 'is-valid') : null">
+    <label class="ms-2" for="floatingInput">{{label}}</label>
+    <div class="invalid-feedback ms-4" *ngIf="control?.errors?.['required']">{{label}} should not be empty</div>
+    <div class="invalid-feedback ms-4" *ngIf="control?.errors?.['pattern']">Please provide a valid {{label}}</div>
+    <div class="invalid-feedback ms-4" *ngIf="control?.errors?.['minlength']">Password should be at least 6 characters long</div>
+</div>

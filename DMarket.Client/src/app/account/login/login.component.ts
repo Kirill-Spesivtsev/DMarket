@@ -9,17 +9,21 @@ import { AccountService } from '../account.service';
 })
 export class LoginComponent {
 
+  emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
   loginForm = new FormGroup({
-    email: new FormControl("", Validators.required),
-    password: new FormControl("", Validators.required),
+    email: new FormControl("", [Validators.required, Validators.pattern(this.emailPattern)]),
+    password: new FormControl("", [Validators.required, Validators.minLength(6)]),
   });
 
   constructor(private accountService: AccountService){}
 
   onSubmit(){
-    this.accountService.login(this.loginForm.value).subscribe({
-      next: user => {console.log(user)}
-    })
+    if (this.loginForm.valid){
+      this.accountService.login(this.loginForm.value).subscribe({
+        next: user => {console.log(user)}
+      })
+    }
   }
 
 }

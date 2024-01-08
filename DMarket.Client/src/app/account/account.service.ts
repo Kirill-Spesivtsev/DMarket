@@ -46,6 +46,7 @@ export class AccountService {
       map( user => {
         localStorage.setItem('jwtToken', user.token);
         this.currentUserSource.next(user);
+        this.router.navigateByUrl('/');
       })
     )
   }

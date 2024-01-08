@@ -12,6 +12,10 @@
 @import "../node_modules/bootswatch/dist/united/bootswatch";
 
 
+body{
+    font-family: 'Roboto Mono', monospace;
+}
+
 /* Breadcrumb */
 label.xng-breadcrumb-trail {
     color: #e95420;
