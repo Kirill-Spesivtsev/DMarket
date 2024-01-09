@@ -7,6 +7,9 @@
 .product-details-image-container{
     overflow: hidden;
     border-radius: 20px;
+    min-height: 320px;
+    min-width: 320px;
+    max-width: 65vh;
     max-height: 65vh;
     max-width: 65vh;
     float: right;
