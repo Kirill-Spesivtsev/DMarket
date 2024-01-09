@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, of } from 'rxjs';
+import { ReplaySubject, map, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../shared/models/applicationUser';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -12,14 +12,14 @@ export class AccountService {
 
   baseUrl = environment.apiBaseUrl;
 
-  private currentUserSource = new BehaviorSubject<User | null>(null);
+  private currentUserSource = new ReplaySubject<User | null>(1);
   currentUser$ = this.currentUserSource.asObservable();
 
   constructor(private http: HttpClient, private router: Router) { }
 
   fetchCurrentUser(jwtToken: string | null){
 
-    if (jwtToken == null) {
+    if (jwtToken === null) {
       this.currentUserSource.next(null);
       return of(null);
     }

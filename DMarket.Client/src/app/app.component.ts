@@ -8,8 +8,6 @@ import { AccountService } from './account/account.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'DMarket';
-  products: Product[] = [];
 
   constructor(private accoutService: AccountService){}
 
@@ -19,7 +17,7 @@ export class AppComponent implements OnInit {
 
   fetchCurrentUser(){
     const jwtToken = localStorage.getItem('jwtToken');
-    if (jwtToken) this.accoutService.fetchCurrentUser(jwtToken).subscribe();
+    this.accoutService.fetchCurrentUser(jwtToken).subscribe();
   }
 
 }
