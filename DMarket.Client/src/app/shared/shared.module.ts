@@ -4,7 +4,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextInputComponent } from './text-input/text-input.component';
-
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [
@@ -14,12 +14,14 @@ import { TextInputComponent } from './text-input/text-input.component';
     CommonModule,
     PaginationModule.forRoot(), 
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CarouselModule.forRoot()
   ],
   exports: [
     PaginationModule,
     ReactiveFormsModule,
-    TextInputComponent
+    TextInputComponent,
+    CarouselModule
   ]
   
 })

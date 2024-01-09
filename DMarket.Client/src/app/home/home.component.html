@@ -1,11 +1,33 @@
-<p>Home here!</p>
-<div class="container mt-5">
-    <button (click)="get400ValidationError()" class="btn btn-outline-primary me-3">400 Validation</button>
-    <button (click)="get404NotFound()" class="btn btn-outline-primary me-3">404 Not Found</button>
-    <div class="row mt-5" *ngIf="validationErrors && validationErrors?.length > 0">
-        <ul class="text-danger">
-            <li *ngFor="let error of validationErrors">{{error}}</li>
-        </ul>
-    </div>
+<div class="mt-5">
+    <carousel [isAnimated]="true" class="main-carousel">
+        <slide>
+            <img src="assets/images/home/slides/slide_1.jpg" alt="slide" class="img-fluid object-fit-fill">
+        </slide>
+        <slide>
+            <img src="assets/images/home/slides/slide_2.jpg" alt="slide" class="img-fluid object-fit-fill">
+        </slide>
+        <slide>
+            <img src="assets/images/home/slides/slide_3.jpg" alt="slide" class="img-fluid object-fit-fill">
+        </slide>
+        <slide>
+            <img src="assets/images/home/slides/slide_4.jpg" alt="slide" class="img-fluid object-fit-fill">
+        </slide>
+        
+    </carousel>
+    <section class="featured">
+        <div class="d-flex justify-content-center pt-5 pb-2">
+            <h1>Welcome to D Market!</h1>
+        </div>
+    </section>
+    <ng-template>
+        <p>Home here!</p>
+        <button (click)="get400ValidationError()" class="btn btn-outline-primary me-3">400 Validation</button>
+        <button (click)="get404NotFound()" class="btn btn-outline-primary me-3">404 Not Found</button>
+        <div class="row mt-5" *ngIf="validationErrors && validationErrors?.length > 0">
+            <ul class="text-danger">
+                <li *ngFor="let error of validationErrors">{{error}}</li>
+            </ul>
+        </div>
+    </ng-template>
 </div>
 

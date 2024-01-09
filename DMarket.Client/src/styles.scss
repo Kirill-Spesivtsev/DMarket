@@ -27,6 +27,18 @@ a.xng-breadcrumb-link{
     text-decoration: none !important;
 }
 
+
+/* Pagination */
+.pagination>li>a, .pagination>li>span { 
+    border-radius: 19px !important;
+    margin: 0px 4px !important;
+    text-align: center !important;
+    min-width: 38px;
+    height: 38px;
+    font-size: 20px;
+    line-height: 130%;
+}
+
 /*
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
