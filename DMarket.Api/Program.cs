@@ -19,6 +19,7 @@ using System.Globalization;
 using System.Security.Claims;
 using System.Text;
 using DMarket.Api.Validators;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +41,12 @@ builder.Services.AddProblemDetails(options =>
         Title = ex.Title, Detail = ex.Message, Status = ex.Status, Type = ex.Type });
 });
 
+builder.Services.AddSingleton<IConnectionMultiplexer>(c => 
+{
+    var options = ConfigurationOptions.Parse(
+        builder.Configuration.GetConnectionString("RedisConnection"));
+    return ConnectionMultiplexer.Connect(options);
+});
 
 builder.Services.AddDbContext<MarketDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
