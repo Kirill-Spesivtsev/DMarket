@@ -1,5 +1,5 @@
 <ng-container *ngIf="$any(breadcrumbService.breadcrumbs$ | async) as breadcrumbs">
-    <section class="page-header-title py-3 shadow-sm"
+    <section class="page-header-title py-3"
         *ngIf="!noHeaderRoutes.includes(breadcrumbs[breadcrumbs.length - 1].label) 
             && !breadcrumbs[breadcrumbs.length - 1].label.includes('error/')" >
         <div class="container">

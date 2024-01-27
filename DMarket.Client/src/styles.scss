@@ -30,14 +30,14 @@ a.xng-breadcrumb-link{
 
 /* Pagination */
 .pagination>li>a, .pagination>li>span { 
-    border-radius: 19px !important;
+    border-radius: 20px !important;
     margin: 0px 4px !important;
     text-align: center !important;
-    min-width: 38px;
-    height: 38px;
+    min-width: 40px;
+    height: 40px;
     font-size: 20px;
     line-height: 130%;
-    border-width: 2px;
+    border-width: 1px;
     border-color: rgb(200, 200, 200) !important;
 
     &:hover{
