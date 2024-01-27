@@ -124,8 +124,6 @@ namespace DMarket.Api.Controllers
 
             return Ok(_mapper.Map<Address, AddressDto>(user?.Address!));
         }
-
-
         
         [HttpPut("address")]
         [Authorize]
@@ -133,7 +131,7 @@ namespace DMarket.Api.Controllers
         {
             var user = await _userManager.GetUserWithIncludeAsync(User);
 
-            user.Address = _mapper.Map<AddressDto, Address>(address);
+            user!.Address = _mapper.Map<AddressDto, Address>(address);
 
             var result = await _userManager.UpdateAsync(user);
 
