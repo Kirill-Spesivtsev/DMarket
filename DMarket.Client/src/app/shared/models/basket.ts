@@ -1,21 +1,21 @@
 import { v4 as uuid } from "uuid";
 
 export interface Basket{
-    Id: string
-    Items: BasketItem[]
+    id: string
+    items: BasketItem[]
 }
   
 export interface BasketItem {
-    Id: string
-    ProductName: string
-    Price: number
-    Quantity: number
-    PictureUrl: string
-    ProductBrand: string
-    ProductType: string
+    id: string
+    productName: string
+    price: number
+    quantity: number
+    pictureUrl: string
+    productBrand: string
+    productType: string
 }
   
 export class Basket implements Basket {
-    Id = uuid();
+    id = uuid();
     items: BasketItem[] = [];
 }
