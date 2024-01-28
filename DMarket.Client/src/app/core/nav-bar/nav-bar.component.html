@@ -13,7 +13,9 @@
     <div class="d-flex align-items-center">
         <a routerLink="/basket" class="nav-link nav-link-panel position-relative text-decoration-none me-md-5 me-4" href="#">
             <i class="fa fa-shopping-cart fa-2x text-dark"></i>
-            <div class="nav-cart-number">9</div>
+            <div *ngIf="(basketService.basketSource$ | async) as basket" class="nav-cart-number">
+                {{calculateBasketItems(basket.items)}}
+            </div>
         </a>
         <ng-container *ngIf="(accountService.currentUser$ | async) === null">
             <a routerLink="/account/login" class="btn btn-primary me-2">Login</a>

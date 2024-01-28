@@ -10,7 +10,7 @@ export interface BasketItem {
     productName: string
     price: number
     quantity: number
-    pictureUrl: string
+    imageUrl: string
     productBrand: string
     productType: string
 }

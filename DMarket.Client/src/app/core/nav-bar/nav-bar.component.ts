@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AccountService } from 'src/app/account/account.service';
+import { BasketService } from 'src/app/basket/basket.service';
+import { BasketItem } from 'src/app/shared/models/basket';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,9 +10,13 @@ import { AccountService } from 'src/app/account/account.service';
 })
 export class NavBarComponent {
 
-  constructor(public accountService: AccountService){}
+  constructor(protected accountService: AccountService, protected basketService: BasketService){}
 
   logout(): void {
     this.accountService.logout();
+  }
+
+  calculateBasketItems(items : BasketItem[]){
+    return items.reduce((sum, element) => sum + element.quantity, 0)
   }
 }

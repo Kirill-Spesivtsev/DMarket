@@ -1,1 +1,63 @@
-<p>basket works!</p>
+<div class="container">
+    <div *ngIf="(basketService.basketSource$ | async) as basket">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="bg-light text-uppercase">
+                        <tr>
+                            <th><div class="fs-5 py-2">Product</div></th>
+                            <th><div class="fs-5 py-2">Price</div></th>
+                            <th><div class="fs-5 py-2">Quantity</div></th>
+                            <th><div class="fs-5 py-2">Total</div></th>
+                            <th><div class="fs-5 py-2">Remove</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of basket.items">
+                            <th>
+                                <div class="d-inline-block">
+                                    <img src="{{item.imageUrl}}" alt="{{item.productName}}" 
+                                        class="img-fluid rounded rounded-3" style="max-height: 50px;">
+                                    <div class="ms-3 d-inline-block align-middle">
+                                        <div class="mb-0 fs-5">
+                                            <a routerLink="/shop/{{item.id}}" class="text-dark text-decoration-none overflow-hidden">
+                                                {{item.productName}}
+                                            </a>
+                                        </div>
+                                        <span class="text-muted fst-italic">
+                                            {{item.productType}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </th>
+                            <td class="align-middle fs-5"><strong>{{item.price | currency}}</strong></td>
+                            <td class="align-middle">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa fa-2x fa-minus-circle text-info me-3 quantity-button"></i>
+                                    <strong class="fs-4">{{item.quantity}}</strong>
+                                    <i class="fa fa-2x fa-plus-circle text-info mx-3 quantity-button"></i>
+                                </div>
+                            </td>
+                            <td class="align-middle fs-5"><strong>{{item.price * item.quantity | currency}}</strong></td>
+                            <td class="align-middle">
+                                <a class="text-danger fs-1">
+                                    <i class="fa fa-trash flat-icon-button"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row my-2">
+            <div class="col-lg-4 col-md-6 col-8 offset-lg-8 offset-md-6 offset-4">
+                <div class="d-grid">
+                    <a routerLink="/checkout" class="btn btn-outline-primary btn-lg">
+                        Proceed to checkout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
