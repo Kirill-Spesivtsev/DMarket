@@ -15,7 +15,7 @@ export class BasketService {
 
   constructor(private http: HttpClient) { }
 
-  getBasket(id: number){
+  getBasket(id: string){
     return this.http.get<Basket>(this.baseUrl + "basket" + "?id=" + id).subscribe({
       next: basket => this.basketSource.next(basket)
     })
@@ -34,15 +34,15 @@ export class BasketService {
   addItemToBasket(item: Product, quantity = 1) {
     const basketItem = this.mapProductToBasketItem(item);
     const basket = this.getCurrentBasket() ?? this.createBasket();
-    if (basket?.Items) basket.items = this.addOrUpdateBasketItem(basket?.Items!, basketItem, quantity);
+    if (basket) basket.items = this.addOrUpdateBasketItem(basket.items, basketItem, quantity);
     this.setBasket(basket!);
   }
 
   private addOrUpdateBasketItem(items: BasketItem[], newItem: BasketItem, quantity: number): BasketItem[] {
-    const item = items.find(x => x.Id === newItem.Id);
-    if (item) item.Quantity = quantity
+    const item = items.find(x => x.id === newItem.id);
+    if (item) item.quantity += quantity
     else {
-      newItem.Quantity = quantity;
+      newItem.quantity = quantity;
       items.push(newItem);
     }
     return items;
@@ -50,19 +50,19 @@ export class BasketService {
 
   createBasket(): Basket | null {
     const basket = new Basket();
-    localStorage.setItem("basket_id", basket.Id);
+    localStorage.setItem("basket_id", basket.id);
     return basket;
   }
 
   private mapProductToBasketItem(item: Product): BasketItem {
     return {
-      Id: item.id,
-      ProductName: item.name,
-      Price: item.price,
-      Quantity: 0,
-      PictureUrl: item.imageUrl,
-      ProductBrand: item.productBrand,
-      ProductType: item.productType
+      id: item.id,
+      productName: item.name,
+      price: item.price,
+      quantity: 0,
+      pictureUrl: item.imageUrl,
+      productBrand: item.productBrand,
+      productType: item.productType
     }
   }
 

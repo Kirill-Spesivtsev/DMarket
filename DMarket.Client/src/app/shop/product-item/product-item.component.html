@@ -24,7 +24,7 @@
             {{product.price | currency}}
         </div>
 
-        <button routerLink="/cart" class="btn btn-outline-primary button-outline-circle rounded rounded-5 mt-2 me-3">
+        <button (click)="addItemToBasket()" class="btn btn-outline-primary button-outline-circle rounded rounded-5 mt-2 me-3">
             <i class="fa fa-lg fa-shopping-cart"></i>
         </button>
     </div>

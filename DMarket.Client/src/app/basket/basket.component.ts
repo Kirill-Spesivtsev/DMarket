@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Product } from '../shared/models/product';
+import { BasketService } from './basket.service';
 
 @Component({
   selector: 'app-basket',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./basket.component.scss']
 })
 export class BasketComponent {
+
 
 }
