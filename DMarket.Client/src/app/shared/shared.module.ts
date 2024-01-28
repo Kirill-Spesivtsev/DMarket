@@ -5,10 +5,12 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextInputComponent } from './text-input/text-input.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
 
 @NgModule({
   declarations: [
-    TextInputComponent
+    TextInputComponent,
+    OrderSummaryComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     PaginationModule,
     ReactiveFormsModule,
     TextInputComponent,
-    CarouselModule
+    CarouselModule,
+    OrderSummaryComponent
   ]
   
 })

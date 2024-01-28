@@ -19,3 +19,9 @@ export class Basket implements Basket {
     id = uuid();
     items: BasketItem[] = [];
 }
+
+export interface BasketTotal{
+    shippingCost: number;
+    basketPrice: number;
+    total: number;
+}
