@@ -1,0 +1,20 @@
+namespace Core.Entities.Order
+{
+    public class OrderItem
+    {
+        public OrderItem() {}
+
+        public OrderItem(ProductItemOrdered itemOrdered, decimal price, int quantity)
+        {
+            ItemOrdered = itemOrdered;
+            Price = price;
+            Quantity = quantity;
+        }
+
+
+        public Guid Id { get; set; } = Guid.NewGuid();
+        public ProductItemOrdered ItemOrdered { get; set; }
+        public decimal Price { get; set; }
+        public int Quantity { get; set; }
+    }
+}

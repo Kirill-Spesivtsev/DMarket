@@ -1,0 +1,30 @@
+[
+  {
+    "Id": "40ebb4a3-4fab-4dba-b129-e825ba3c6e8b",
+    "ShortName": "UPS1",
+    "Description": "Top speed VIP delivery",
+    "DeliveryTime": "24 Hours",
+    "Price": 25
+  },
+  {
+    "Id": "f145c780-a342-44c1-8438-f67b4b0e600a",
+    "ShortName": "UPS2",
+    "Description": "Get it within 5 days",
+    "DeliveryTime": "2-5 Days",
+    "Price": 10
+  },
+  {
+    "Id": "cb20fc89-0c4f-4428-93a3-40d769d18649",
+    "ShortName": "UPS3",
+    "Description": "Cheap delivery",
+    "DeliveryTime": "5-10 Days",
+    "Price": 2
+  },
+  {
+    "Id": "30a17461-3064-453b-ad3a-ae0566d0c761",
+    "ShortName": "FREE",
+    "Description": "Completely Free",
+    "DeliveryTime": "1-2 Weeks",
+    "Price": 0
+  }
+]

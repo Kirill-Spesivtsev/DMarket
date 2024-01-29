@@ -1,4 +1,5 @@
-﻿using DMarket.Core.Entities;
+﻿using Core.Entities.Order;
+using DMarket.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -34,6 +35,12 @@ namespace DMarket.Infrastructure.Data
                 var json = File.ReadAllText("../DMarket.Infrastructure/Data/Seed/products.json");
                 var data = Deserialize<List<Product>>(json);
                 await context.Products.AddRangeAsync(data!);
+            }
+            if (!context.DeliveryMethods.Any())
+            {
+                var json = File.ReadAllText("../DMarket.Infrastructure/Data/Seed/delivery.json");
+                var data = Deserialize<List<DeliveryMethod>>(json);
+                await context.DeliveryMethods.AddRangeAsync(data!);
             }
 
             if (context.ChangeTracker.HasChanges())
