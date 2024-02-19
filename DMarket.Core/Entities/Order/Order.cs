@@ -1,4 +1,6 @@
-namespace Core.Entities.Order
+using DMarket.Core.Entities.Order;
+
+namespace DMarket.Core.Entities.Order
 {
     public class Order
     {

@@ -1,4 +1,4 @@
-namespace Core.Entities.Order
+namespace DMarket.Core.Entities.Order
 {
     public class DeliveryMethod
     {

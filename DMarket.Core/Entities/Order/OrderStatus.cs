@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace Core.Entities.Order
+namespace DMarket.Core.Entities.Order
 {
     public enum OrderStatus
     {

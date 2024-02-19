@@ -1,8 +1,8 @@
-using Core.Entities.Order;
+using DMarket.Core.Entities.Order;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.Data.Config
+namespace DMarket.Infrastructure.Data.Config
 {
     public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItem>
     {
