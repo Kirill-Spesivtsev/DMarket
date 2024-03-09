@@ -5,7 +5,11 @@ namespace DMarket.Infrastructure.Abstractions
 {
     public interface IUnitOfWork
     {
-        public Task SaveChangesAsync(CancellationToken cancellationToken = default);
+        public IOrderRepository Orders { get; }
+        public IDeliveryMethodRepository DeliveryMethods { get; }
+        public IProductRepository Products { get; }
+
+        public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 
         public IDbTransaction BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted);
     }

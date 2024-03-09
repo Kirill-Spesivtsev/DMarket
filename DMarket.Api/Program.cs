@@ -20,6 +20,9 @@ using System.Security.Claims;
 using System.Text;
 using DMarket.Api.Validators;
 using StackExchange.Redis;
+using DMarket.Core.Interfaces;
+using DMarket.Infrastructure.Services;
+using DMarket.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -131,9 +134,11 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 var app = builder.Build();
 

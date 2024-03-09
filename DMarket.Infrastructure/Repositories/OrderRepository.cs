@@ -25,10 +25,18 @@ namespace DMarket.Infrastructure.Repositories
 
         public IQueryable<Order> GetFilteredOrdersAsync(Expression<Func<Order, bool>> predicate)
         {
-            return _context.Orders.Where(predicate);
+            return _context.Orders.Where(predicate)
+                .Include(p => p.OrderItems)
+                .Include(o => o.DeliveryMethod);
         }
  
-        public async Task<Order?> GetOrderByIdAsync(Guid id) => await _context.Orders.FindAsync(id);
+        public async Task<Order?> GetOrderByIdAsync(Guid id)
+        { 
+            return await _context.Orders
+                .Include(o => o.OrderItems)
+                .Include(o => o.DeliveryMethod)
+                .FirstOrDefaultAsync(o => o.Id == id);
+        }
 
         public async Task AddOrder(Order entity)
         {

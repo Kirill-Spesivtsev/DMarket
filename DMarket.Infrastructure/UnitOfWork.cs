@@ -16,26 +16,24 @@ namespace DMarket.Infrastructure
     {
         private readonly MarketDbContext _context;
         
-        public IBasketRepository Baskets { get; private set; }
         public IOrderRepository Orders { get; private set; }
         public IDeliveryMethodRepository DeliveryMethods { get; private set; }
         public IProductRepository Products { get; private set; }
 
 
-        public UnitOfWork(MarketDbContext context, IBasketRepository basketRepository)
+        public UnitOfWork(MarketDbContext context)
         {
             _context = context;
 
-            Baskets = basketRepository;
             Orders = new OrderRepository(_context);
             DeliveryMethods = new DeliveryMethodRepository(_context);
             Products = new ProductRepository(_context);
 
         }
  
-        public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            await _context.SaveChangesAsync(cancellationToken);
+            return await _context.SaveChangesAsync(cancellationToken);
         }
 
         public IDbTransaction BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
