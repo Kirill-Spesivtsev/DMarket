@@ -2,6 +2,7 @@
 using DMarket.Api.DTO;
 using DMarket.Api.Helpers;
 using DMarket.Application.Abstractions;
+using DMarket.Application.Dto;
 using DMarket.Core.Entities.Identity;
 using DMarket.Core.Exceptions;
 using Microsoft.AspNetCore.Authorization;
