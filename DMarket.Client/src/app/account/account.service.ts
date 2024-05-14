@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AccountService {
+  updateUserAddress(value: any) {
+    throw new Error('Method not implemented.');
+  }
 
   baseUrl = environment.apiBaseUrl;
 

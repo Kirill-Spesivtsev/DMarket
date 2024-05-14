@@ -6,25 +6,35 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TextInputComponent } from './text-input/text-input.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import {CdkStepperModule} from '@angular/cdk/stepper';
+import { StepperComponent } from './stepper/stepper.component';
+import { BasketSummaryComponent } from './basket-summary/basket-summary.component';
 
 @NgModule({
   declarations: [
     TextInputComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    StepperComponent,
+    BasketSummaryComponent,
+    //BasketSummaryComponent
   ],
   imports: [
     CommonModule,
     PaginationModule.forRoot(), 
     RouterModule,
     ReactiveFormsModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    CdkStepperModule
   ],
   exports: [
     PaginationModule,
     ReactiveFormsModule,
     TextInputComponent,
     CarouselModule,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    CdkStepperModule,
+    StepperComponent,
+    //BasketSummaryComponent
   ]
   
 })
