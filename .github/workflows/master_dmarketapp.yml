@@ -37,7 +37,7 @@ jobs:
           cp ./DMarket.Api/dmarket.db ./DMarket.Api/output/
 
       - name: Upload ASP.NET Core Web API (backend) artifact for deployment job
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4.3.3
         with:
           name: asp-backend
           path: ./output/**
@@ -54,7 +54,7 @@ jobs:
           npm run build -- --configuration production
 
       - name: Upload Angular client App (frontend) artifact for deployment job
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4.3.3
         with:
           name: angular-frontend
           path: ./dist/**
@@ -68,12 +68,12 @@ jobs:
     
     steps:
       - name: Download backend artifact from build job
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: asp-backend
 
       - name: Download frontend artifact from build job
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: angular-frontend
       
