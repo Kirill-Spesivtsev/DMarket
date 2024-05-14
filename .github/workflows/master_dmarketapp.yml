@@ -26,21 +26,18 @@ jobs:
         run: |
           cd DMarket.Api
           dotnet build --configuration Release
-
       - name: dotnet publish
         run: |
           cd DMarket.Api
           dotnet publish -c Release --output ./output
-
       - name: Copy SQLite Database to API output folder
         run: |
           cp ./DMarket.Api/dmarket.db ./DMarket.Api/output/
-
       - name: Upload ASP.NET Core Web API (backend) artifact for deployment job
         uses: actions/upload-artifact@v4.3.3
         with:
           name: asp-backend
-          path: ./output/**
+          path: ./output
 
       - name: Setup Node.js env
         uses: actions/setup-node@v4.0.2
@@ -52,12 +49,11 @@ jobs:
           cd DMarket.Client
           npm install
           npm run build -- --configuration production
-
       - name: Upload Angular client App (frontend) artifact for deployment job
         uses: actions/upload-artifact@v4.3.3
         with:
           name: angular-frontend
-          path: ./dist/**
+          path: ./dist
 
   deploy:
     runs-on: ubuntu-latest
@@ -67,8 +63,15 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
-      - name: Download all artifacts from build job
-        uses: actions/download-artifact@v3
+      - name: Download backend artifact from build job
+        uses: actions/download-artifact@v4.1.7
+        with:
+          name: asp-backend
+
+      - name: Download frontend artifact from build job
+        uses: actions/download-artifact@v4.1.7
+        with:
+          name: angular-frontend
       
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
