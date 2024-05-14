@@ -67,15 +67,8 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
-      - name: Download backend artifact from build job
-        uses: actions/download-artifact@v4.1.7
-        with:
-          name: asp-backend
-
-      - name: Download frontend artifact from build job
-        uses: actions/download-artifact@v4.1.7
-        with:
-          name: angular-frontend
+      - name: Download all artifacts from build job
+        uses: actions/download-artifact@v3
       
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
