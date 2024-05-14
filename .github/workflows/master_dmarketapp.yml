@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: asp-backend
-          path: ./output
+          path: DMarket.Api/output/**
 
       - name: Setup Node.js env
         uses: actions/setup-node@v4.0.2
@@ -53,7 +53,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: angular-frontend
-          path: ./dist
+          path: DMarket.Client/dist/**
 
   deploy:
     runs-on: ubuntu-latest
