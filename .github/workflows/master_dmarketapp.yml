@@ -51,7 +51,7 @@ jobs:
         run: |
           cd DMarket.Client
           npm install
-          npm run build -- --prod
+          npm run build -- --configuration production
 
       - name: Upload Angular client App (frontend) artifact for deployment job
         uses: actions/upload-artifact@v3
