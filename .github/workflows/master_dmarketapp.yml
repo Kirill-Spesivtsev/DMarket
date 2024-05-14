@@ -30,13 +30,34 @@ jobs:
       - name: dotnet publish
         run: |
           cd DMarket.Api
-          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+          dotnet publish -c Release --output ./output
 
-      - name: Upload artifact for deployment job
+      - name: Copy SQLite Database to API output folder
+        run: |
+          cp ./DMarket.Api/dmarket.db ./DMarket.Api/output/
+
+      - name: Upload ASP.NET Core Web API (backend) artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
-          name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+          name: asp-backend
+          path: ./output/**
+
+      - name: Setup Node.js env
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: '18.10.0'
+
+      - name: Build Angular project
+        run: |
+          cd DMarket.Client
+          npm install
+          npm run build -- --prod
+
+      - name: Upload Angular client App (frontend) artifact for deployment job
+        uses: actions/upload-artifact@v3
+        with:
+          name: angular-frontend
+          path: ./dist/**
 
   deploy:
     runs-on: ubuntu-latest
@@ -46,10 +67,15 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
-      - name: Download artifact from build job
+      - name: Download backend artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: .net-app
+          name: asp-backend
+
+      - name: Download frontend artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: angular-frontend
       
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -57,5 +83,7 @@ jobs:
         with:
           app-name: 'DMarketApp'
           slot-name: 'Production'
-          package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C08A81532A6A4BB684CAB08084CD9009 }}
+          package: |
+            DMarket.Api/output
+            DMarket.Client/dist
