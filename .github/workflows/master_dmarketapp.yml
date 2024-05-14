@@ -80,6 +80,4 @@ jobs:
           app-name: 'DMarketApp'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C08A81532A6A4BB684CAB08084CD9009 }}
-          package: |
-            DMarket.Api/output
-            DMarket.Client/dist
+          package: .
